@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteManager.generateRoute,
         initialRoute: '/splash',
         title: 'Flutter Demo',

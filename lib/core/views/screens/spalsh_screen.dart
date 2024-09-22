@@ -8,37 +8,36 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     home();
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-
-
+    return const Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Text(' '),
-        Text('An Najah '),
-          SizedBox(height: 30,),
-          Center(child: CircularProgressIndicator(),
+        children: [
+          Text(' '),
+          Text('An Najah '),
+          SizedBox(
+            height: 30,
+          ),
+          Center(
+            child: CircularProgressIndicator(),
           ),
         ],
       ),
     );
   }
-  home(){
-    Future.delayed(Duration(seconds: 3),(){
 
-      Navigator.pushNamedAndRemoveUntil(context, "/home",(route)=>false);
+  home() {
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
     });
   }
-
-  }
-
+}
