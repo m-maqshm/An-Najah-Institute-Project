@@ -117,7 +117,7 @@ class SignupScreen extends StatelessWidget {
                       Row(
                         children: [
                           const Padding(
-                            padding: EdgeInsets.only(left: 35, bottom: 7),
+                            padding: EdgeInsets.only(left: 35, bottom: 8),
                             child: Text(
                               "Gender",
                               style: TextStyle(
