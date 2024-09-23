@@ -4,25 +4,16 @@ import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class SignupScreen extends StatefulWidget {
-  SignupScreen({super.key});
-
-  @override
-  State<SignupScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<SignupScreen> {
+class SignupScreen extends StatelessWidget {
+  final TextEditingController fullnameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  final TextEditingController passwordController = TextEditingController();
-
-  final TextEditingController fullnameController = TextEditingController();
-
-  final TextEditingController phoneController = TextEditingController();
-
-  final TextEditingController locationController = TextEditingController();
-
   String gender = "male";
+
+  SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +21,7 @@ class _LoginScreenState extends State<SignupScreen> {
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return SafeArea(
+        child: SafeArea(
       child: Scaffold(
         appBar: const AppbarWidget(),
         body: Stack(
@@ -55,7 +47,7 @@ class _LoginScreenState extends State<SignupScreen> {
                 ),
               ),
             ),
-           Positioned(
+            Positioned(
               top: 10,
               left: 20,
               right: 20,
@@ -124,8 +116,8 @@ class _LoginScreenState extends State<SignupScreen> {
                       ),
                       Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 35, bottom: 7),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 35, bottom: 7),
                             child: Text(
                               "Gender",
                               style: TextStyle(
@@ -141,7 +133,6 @@ class _LoginScreenState extends State<SignupScreen> {
                               groupValue: gender,
                               onChanged: (e) {
                                 gender = e!;
-                                setState(() {});
                               }),
                           Text("female"),
                           Radio(
@@ -149,7 +140,6 @@ class _LoginScreenState extends State<SignupScreen> {
                               groupValue: gender,
                               onChanged: (e) {
                                 gender = e!;
-                                setState(() {});
                               })
                         ],
                       ),
@@ -165,6 +155,6 @@ class _LoginScreenState extends State<SignupScreen> {
           ],
         ),
       ),
-    );
+    ));
   }
 }
