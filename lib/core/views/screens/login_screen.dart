@@ -82,6 +82,22 @@ class LoginScreen extends StatelessWidget {
                       ),
                       TextFormScreen(
                           controller: emailController,
+                          validateInput: (value) {
+                            // if (value!.isEmpty) {
+                            //   return 'Enter a valid password!';
+                            // }else if (value!.length<8) {
+                            //   return ' password should be at least 8 chars';
+                            // }else if (!RegExp("[a-z]").hasMatch(value!)) {
+                            //   return ' password should at least one lowercase chars';
+                            // }else if (!RegExp("[A-Z]").hasMatch(value!)) {
+                            //   return ' password should at least one uppercase chars';
+                            // }else if (!RegExp("[!#\$%&'*+-/=?^_`{|}~@]").hasMatch(value!)) {
+                            //   return ' password should at least one symbol';
+                            // }else if (!RegExp("[0-9]").hasMatch(value!)) {
+                            //   return ' password should at least one number';
+                            // }
+                            // return null;
+                          },
                           hint: "Enter your email eg. ali@gmail.com",
                           lable: "Email:",
                           keyboardType: TextInputType.emailAddress),
@@ -90,7 +106,9 @@ class LoginScreen extends StatelessWidget {
                           hint: "Enter your password ,please ",
                           lable: "Password:",
                           keyboardType: TextInputType.visiblePassword),
-                      BottonScreen(),
+                      BottonScreen(text: 'login',methd:(){
+                        print('object');
+                      },),
                       const SizedBox(
                         height: 15,
                       ),
@@ -105,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                           const SizedBox(width: 20),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamedAndRemoveUntil(context, "/sing"  ,(Route)=> false );
+                              Navigator.pushNamedAndRemoveUntil(context, "/sinup"  ,(Route)=> false );
                             },
                             child: const Text(
                               "Sign up",

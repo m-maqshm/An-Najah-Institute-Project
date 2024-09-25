@@ -5,8 +5,10 @@ class TextFormScreen extends StatelessWidget {
   TextEditingController? controller;
   TextInputType? keyboardType;
   String? lable, hint;
+  FormFieldValidator<String?>? validateInput;
+
   TextFormScreen(
-      {super.key, this.controller, this.hint, this.lable, this.keyboardType});
+      {super.key, this.controller, this.hint,this.validateInput, this.lable, this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class TextFormScreen extends StatelessWidget {
           // SizedBox(height: 5),
           TextFormField(
             controller: controller,
+            validator: validateInput,
             keyboardType: keyboardType,
             decoration: InputDecoration(
               hintText: hint,

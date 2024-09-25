@@ -143,7 +143,9 @@ class SignupScreen extends StatelessWidget {
                               })
                         ],
                       ),
-                      BottonScreen(),
+                      BottonScreen(methd: (){
+
+                      },),
                       const SizedBox(
                         height: 15,
                       ),
