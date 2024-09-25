@@ -73,11 +73,13 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
+
+                        // alignment: TextAlign.right.,
                         padding: const EdgeInsets.only(bottom: 10),
                         child: const Text(
                           "login",
                           style:
-                              TextStyle(fontSize: 70, fontFamily: "mainFont"),
+                              TextStyle(fontSize: 70, fontFamily: "mainFont")
                         ),
                       ),
                       TextFormScreen(
@@ -98,15 +100,15 @@ class LoginScreen extends StatelessWidget {
                             // }
                             // return null;
                           },
-                          hint: "Enter your email eg. ali@gmail.com",
-                          lable: "Email:",
+                          hint: "ادخل بريدك الالكتروني  eg. ali@gmail.com",
+                          lable: "البريد الالكتروني:",
                           keyboardType: TextInputType.emailAddress),
                       TextFormScreen(
                           controller: passwordController,
                           hint: "Enter your password ,please ",
-                          lable: "Password:",
+                          lable: "كلمة المرور:",
                           keyboardType: TextInputType.visiblePassword),
-                      BottonScreen(text: 'login',methd:(){
+                      BottonScreen(text: 'دخول',methd:(){
                         print('object');
                       },),
                       const SizedBox(

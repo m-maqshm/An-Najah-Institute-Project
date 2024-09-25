@@ -14,11 +14,8 @@ class BottonScreen extends StatelessWidget {
         width: 160,
         child: ElevatedButton(
 
-            style: ElevatedButton.styleFrom(
-
-                backgroundColor: const Color.fromARGB(255, 130, 124, 186),
-                foregroundColor: Colors.white),
+            style: Theme.of(context).textButtonTheme.style,
             onPressed: methd ,
-            child:  Text('$text', style: TextStyle(fontFamily: "mainFont" , fontSize: 30),)));
+            child:  Center(child: Text('$text', style:TextStyle( fontFamily: "cairo.ttf" , fontSize: 22)))));
   }
 }

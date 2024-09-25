@@ -143,7 +143,7 @@ class SignupScreen extends StatelessWidget {
                               })
                         ],
                       ),
-                      BottonScreen(methd: (){
+                      BottonScreen(text: 'انشاء مستخدم',methd: (){
 
                       },),
                       const SizedBox(
