@@ -15,8 +15,6 @@ class RouteManager{
       case '/corsdetals':return MaterialPageRoute(builder: (ctx)=>CorseDetalsSreen());
       case '/login':return MaterialPageRoute(builder: (ctx)=>LoginScreen());
       case '/sinup':return MaterialPageRoute(builder: (ctx)=>SignupScreen());
-
-
       case '/default':return MaterialPageRoute(builder: (ctx)=>SplashScreen());
     }
   }
