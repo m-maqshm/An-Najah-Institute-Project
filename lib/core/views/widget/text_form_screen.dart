@@ -31,7 +31,7 @@ class TextFormScreen extends StatelessWidget {
             keyboardType: keyboardType,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: const TextStyle(fontFamily: "shorog",fontSize: 15, color: Colors.black),
+              hintStyle: const TextStyle(fontFamily: "shorog",fontSize: 15, color: Colors.black,),
               filled: true,
               fillColor: const Color.fromARGB(255, 216, 210, 185),
               border: OutlineInputBorder(
