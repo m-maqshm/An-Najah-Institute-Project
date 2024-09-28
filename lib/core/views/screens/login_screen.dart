@@ -107,6 +107,7 @@ class LoginScreen extends StatelessWidget {
                           text: 'دخول',
                           methd: () {
                             if (frmKey.currentState!.validate() == true) {}
+                            print('object');
                           },
                         ),
                         const SizedBox(

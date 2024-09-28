@@ -37,8 +37,8 @@ class Cors_Screen extends StatelessWidget {
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.3,
+                  width: double.infinity,
                   decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.all(Radius.circular(30)),
                       image: DecorationImage(
                           image: AssetImage('assets/images/p1.jpg')),
                   ),
@@ -56,17 +56,6 @@ class Cors_Screen extends StatelessWidget {
                                 fontFamily: 'cairo.ttf',
                                 fontWeight: FontWeight.bold,
                                 fontSize: 35,),textAlign: TextAlign.right,))),
-                Positioned(
-                    right: 10,
-                    bottom: 20,
-                    child: Container(
-                      width: 80,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(166, 166, 239, 1.0),
-                      ),
-                      child: Center(child: Text('regster now')),
-                    )),
 
                 Positioned(
                   top: 250,
