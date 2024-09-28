@@ -18,18 +18,20 @@ class TextFormScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Text(lable! , style: const TextStyle(fontFamily: "mainFont" , fontSize: 25),),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.only(right: 15),
+            child: Text('$lable' , style: Theme.of(context).textTheme.bodyMedium/*TextStyle(fontFamily: "shahdFont" , fontSize: 16)*/,textAlign:TextAlign.right,textDirection: TextDirection.rtl,),
           ),
           // SizedBox(height: 5),
           TextFormField(
+            textAlign:TextAlign.right,textDirection: TextDirection.rtl,
             controller: controller,
             validator: validateInput,
             keyboardType: keyboardType,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: const TextStyle( fontSize: 12),
+              hintStyle: const TextStyle(fontFamily: "shorog",fontSize: 15, color: Colors.black,),
               filled: true,
               fillColor: const Color.fromARGB(255, 216, 210, 185),
               border: OutlineInputBorder(

@@ -10,6 +10,7 @@ class SignupScreen extends StatelessWidget {
   final TextEditingController locationController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  GlobalKey<FormState> _frmKey = GlobalKey();
 
   String gender = "male";
 
@@ -76,80 +77,133 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: const Text(
-                          "Sign up.",
-                          style:
-                              TextStyle(fontSize: 70, fontFamily: "mainFont"),
+                  child: Form(
+                    key: _frmKey,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: const Text(
+                            "تسجيل حساب",
+                            style:
+                                TextStyle(fontSize: 50, fontFamily: "shorog"),
+                          ),
                         ),
-                      ),
-                      TextFormScreen(
+                        TextFormScreen(
                           controller: fullnameController,
-                          hint: "please enter your triple name..",
-                          lable: "full name:",
-                          keyboardType: TextInputType.visiblePassword),
-                      TextFormScreen(
+                          hint: "من فضلك ادخل اسمك رباعياُ",
+                          lable: "الاسم الكامل",
+                          keyboardType: TextInputType.text,
+                          validateInput: (value) {
+                            if (value!.isEmpty) {
+                              return 'يرجى ملئ هذا الحقل';
+                            } else if (value!.length < 8) {
+                              return 'ادخل كلمة مرور لا تقل عن 8 أحرف';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormScreen(
                           controller: phoneController,
-                          hint: "please enter your phone number..",
-                          lable: "phone:",
-                          keyboardType: TextInputType.visiblePassword),
-                      TextFormScreen(
+                          hint: "من فضلك ادخل رقم هاتفك هنا",
+                          lable: "رقم الهاتف",
+                          keyboardType: TextInputType.number,
+                          validateInput: (value) {
+                            if (value!.isEmpty) {
+                              return 'يرجى ملئ هذا الحقل';
+                            } else if (!RegExp(r'^7[1378]\d{7}$')
+                                .hasMatch(value!)) {
+                              return 'ادخل رقم هاتف صحيح ';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormScreen(
                           controller: locationController,
-                          hint: "please enter your location.. ",
-                          lable: "Password:",
-                          keyboardType: TextInputType.visiblePassword),
-                      TextFormScreen(
+                          hint:
+                              "من فضلك ادخل عنوانك هنا مثل: حضرموت / القطن / الريضة ",
+                          lable: "العنوان:",
+                          keyboardType: TextInputType.visiblePassword,
+                          validateInput: (value) {
+                            if (value!.isEmpty) {
+                              return 'يرجى ادخال عنوانك';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormScreen(
                           controller: emailController,
-                          hint: "Enter your email eg. ali@gmail.com",
-                          lable: "Email:",
-                          keyboardType: TextInputType.emailAddress),
-                      TextFormScreen(
-                          controller: passwordController,
-                          hint: "Enter your password ,please ",
-                          lable: "Password:",
-                          keyboardType: TextInputType.visiblePassword),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 38, bottom: 7),
-                            child: Text(
-                              "Gender",
-                              style: TextStyle(
-                                  fontSize: 25, fontFamily: "mainFont"),
+                          hint:
+                              " ali@gmail.com     :ادخل بريدك الالكتروني هنا مثل",
+                          lable: "البريد الالكتروني:",
+                          keyboardType: TextInputType.emailAddress,
+                          validateInput: (value) {
+                            if (value!.isEmpty ||
+                                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                    .hasMatch(value!)) {
+                              return 'ادخل بريد الكتروني صحيح';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormScreen(
+                            controller: passwordController,
+                            hint: "من فضلك اكتب كلمة السر هنا ",
+                            lable: "كلمة المرور:",
+                            keyboardType: TextInputType.visiblePassword,
+                            validateInput: (value) {
+                              if (value!.isEmpty) {
+                                return 'يرجى ملئ هذا الحقل';
+                              } else if (value.length > 8) {
+                                return 'ادخل كلمة مرور لا تقل عن 8 أحرف ';
+                              }
+                              return null;
+                            }),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          textDirection: TextDirection.rtl,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 30, bottom: 7),
+                              child: Text(
+                                "الجنس",
+                                style: TextStyle(
+                                    fontSize: 25, fontFamily: "mainFont"),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Text("Male"),
-                          Radio(
-                              value: "male",
-                              groupValue: gender,
-                              onChanged: (e) {
-                                gender = e!;
-                              }),
-                          Text("female"),
-                          Radio(
-                              value: "female",
-                              groupValue: gender,
-                              onChanged: (e) {
-                                gender = e!;
-                              })
-                        ],
-                      ),
-                      BottonScreen(methd: (){
-
-                      },),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                    ],
+                            SizedBox(
+                              width: 30,
+                            ),
+                            Text("ذكر"),
+                            Radio(
+                                value: "male",
+                                groupValue: gender,
+                                onChanged: (e) {
+                                  gender = e!;
+                                }),
+                            Text("انثى"),
+                            Radio(
+                                value: "female",
+                                groupValue: gender,
+                                onChanged: (e) {
+                                  gender = e!;
+                                })
+                          ],
+                        ),
+                        BottonScreen(
+                          text: "تسجيل",
+                          methd: () {
+                            if (_frmKey.currentState!.validate() == true) {}
+                          },
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

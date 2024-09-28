@@ -80,6 +80,18 @@ flutter:
     - family: mainFont
       fonts:
         - asset: assets/fonts/JustMeAgainDownHere.ttf
+
+    - family: shahdFont
+      fonts:
+        - asset: assets/fonts/Shahd-Font-Regular.ttf
+
+    - family: cairo.ttf
+      fonts:
+        - asset: assets/fonts/Cairo-Bold.ttf
+
+    - family: shorog
+      fonts:
+        - asset: assets/fonts/Shoroq-Font.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
