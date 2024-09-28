@@ -75,7 +75,6 @@ class CorseDetalsSreen extends StatelessWidget {
                               size: 20,
                             ),
                             Text("120 hours"),
-                            Te
                           ],
                         ),
                         width: 90,

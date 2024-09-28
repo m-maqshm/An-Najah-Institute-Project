@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteManager.generateRoute,
-        initialRoute: '/corsdetals',
+        initialRoute: '/cors',
         title: 'Flutter Demo',
         theme: aapligetThem,
         // theme: ThemeData(
