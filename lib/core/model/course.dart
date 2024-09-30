@@ -19,6 +19,7 @@ class Course {
       this.longDescription});
 
   Course.fromJson(Map<String, dynamic> json) {
+
     courseName = json['courseName'];
     hours = json['hours'];
     period = json['period'];
