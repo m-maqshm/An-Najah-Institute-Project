@@ -158,3 +158,6 @@ class SignupScreen extends StatelessWidget {
     ));
   }
 }
+
+// background: rgba(130, 124, 186, 1);
+

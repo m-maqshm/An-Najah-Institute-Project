@@ -1,3 +1,5 @@
+import 'package:an_najah_project/core/views/screens/diplomas_available.dart';
+import 'package:an_najah_project/core/views/screens/profile.dart';
 import 'package:an_najah_project/core/views/screens/signup_screen.dart';
 import 'package:an_najah_project/core/views/screens/login_screen.dart';
 
@@ -10,6 +12,8 @@ class RouteManager{
       case '/splash':return MaterialPageRoute(builder: (ctx)=>SplashScreen());
       case '/login':return MaterialPageRoute(builder: (ctx)=>LoginScreen());
       case '/sing': return MaterialPageRoute(builder: (ctx)=> SignupScreen());
+      case '/diplom': return MaterialPageRoute(builder: (ctx)=> DiplomasAvailable());
+      case '/pro': return MaterialPageRoute(builder: (ctx)=> Profile());
 
 
       case '/default':return MaterialPageRoute(builder: (ctx)=>SplashScreen());
