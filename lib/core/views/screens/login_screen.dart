@@ -12,7 +12,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // الحصول على ارتفاع الشاشة الكاملة
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return SafeArea(
@@ -80,6 +79,7 @@ class LoginScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 50, fontFamily: "shorog")),
                         ),
+
                         TextFormScreen(
                             controller: emailController,
                             validateInput: (value) {
@@ -89,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                                 return 'من فضلك ادخل بريدك الكتروني ';
                               }
                               return null;
+
                             },
                             hint:
                                 "ادخل بريدك الالكتروني هنا مثل:ali.gmail.com ",

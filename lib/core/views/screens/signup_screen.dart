@@ -170,6 +170,8 @@ class SignupScreen extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 25, fontFamily: "mainFont"),
                               ),
+                 fontSize: 25, fontFamily: "mainFont"),
+
                             ),
                             SizedBox(
                               width: 30,
@@ -211,3 +213,6 @@ class SignupScreen extends StatelessWidget {
     ));
   }
 }
+
+// background: rgba(130, 124, 186, 1);
+
