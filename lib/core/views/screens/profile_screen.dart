@@ -1,8 +1,9 @@
+import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:an_najah_project/core/views/widget/list_titel_widget.dart';
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +12,7 @@ class Profile extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        appBar: AppbarWidget(),
         backgroundColor: Color.fromRGBO(145, 139, 199, 1),
         floatingActionButton: Container(
           height: height*.06,

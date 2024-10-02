@@ -3,7 +3,6 @@ import 'package:an_najah_project/core/views/widget/botton_screen.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -12,7 +11,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // الحصول على ارتفاع الشاشة الكاملة
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return SafeArea(
@@ -105,7 +103,8 @@ class LoginScreen extends StatelessWidget {
                           const SizedBox(width: 20),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamedAndRemoveUntil(context, "/sing"  ,(Route)=> false );
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, "/sing", (Route) => false);
                             },
                             child: const Text(
                               "Sign up",
