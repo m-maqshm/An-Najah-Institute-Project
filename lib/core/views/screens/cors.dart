@@ -40,7 +40,8 @@ class Cors_Screen extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/p1.jpg')),
+                          image: AssetImage('assets/images/p1.jpg'),fit: BoxFit.fill
+                      ),
                   ),
                 ),
                 Positioned(
@@ -55,8 +56,7 @@ class Cors_Screen extends StatelessWidget {
                                 color: Color.fromARGB(255, 255, 255, 255),
                                 fontFamily: 'cairo.ttf',
                                 fontWeight: FontWeight.bold,
-                                fontSize: 35,),textAlign: TextAlign.right,))),
-
+                                fontSize: 30,),textAlign: TextAlign.right,))),
                 Positioned(
                   top: 250,
                   left: 0,
@@ -82,7 +82,6 @@ class Cors_Screen extends StatelessWidget {
                               return Container(
                                 margin: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
                                 padding: EdgeInsets.symmetric(horizontal: 10),
-                                // width: 100,
                                 height: 110,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Color.fromARGB(39, 187, 173, 255)),

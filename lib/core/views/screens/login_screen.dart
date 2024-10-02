@@ -17,7 +17,6 @@ class LoginScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: const AppbarWidget(),
         body: Stack(
           children: [
             // الحاوية الزرقاء تأخذ ارتفاع الشاشة بالكامل
@@ -75,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(
-                          // alignment: TextAlign.right.,
+
                           padding: const EdgeInsets.only(bottom: 10),
                           child: const Text("تسجيل الدخول",
                               style: TextStyle(
@@ -92,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                               return null;
                             },
                             hint:
-                                " ali@gmail.com     :ادخل بريدك الالكتروني هنا مثل",
+                                "ادخل بريدك الالكتروني هنا مثل:ali.gmail.com ",
                             lable: "البريد الالكتروني:",
                             keyboardType: TextInputType.emailAddress),
                         TextFormScreen(
