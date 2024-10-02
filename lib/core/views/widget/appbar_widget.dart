@@ -6,13 +6,16 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color.fromARGB(255, 138, 168, 217),
-      title: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(40),
-            bottomRight: Radius.circular(40),
-          ),
+
+
+      // shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.vertical(bottom: Radius.circular(40))),
+      backgroundColor: const Color.fromARGB(255, 138, 168,217),
+      title: const ListTile(
+        leading: Padding(
+          padding: EdgeInsets.only(top: 5),
+          child: CircleAvatar( child: Icon(Icons.person),),
+
         ),
         child: const ListTile(
           leading: Padding(
