@@ -80,32 +80,44 @@ String? birthday;
                 }
                 return null;
               }),
-/*              InkWell(
-                  onTap: ()  async{
+/*             Container(
+               width: double.infinity,
 
-                    _openDatePickerWithButtonStyle(context);
-                  },
-                  child:Container(
-                    width: 350,
+               margin: const EdgeInsets.symmetric(horizontal: 10),
+               child: Text('lable' , style: TextStyle(fontFamily: "shahdFont" , fontSize: 16)))*/
+              InkWell(
+                onTap: ()  async{
 
-                    margin: const EdgeInsets.all(10),
+                  _openDatePickerWithButtonStyle(context);
+                },
+                child:Container(
+                    width: double.infinity,
+
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('lable' , style: Theme.of(context).textTheme.bodyMedium*//*TextStyle(fontFamily: "shahdFont" , fontSize: 16)*//*,),
-                      Container(
-                        color: Colors.white,
-                      width: double.infinity,
-                      height: 50,
-                      padding: const EdgeInsets.only(right: 15),
-                      child: Text('lable' , style: Theme.of(context).textTheme.bodyMedium*//*TextStyle(fontFamily: "shahdFont" , fontSize: 16)*//*,),
-                    )])),)*/
-              BottonScreen(methd: ()  async{
+                        Container(padding: EdgeInsets.symmetric(horizontal: 15),child: Text('تاريخ الميلاد' ,  style: Theme.of(context).textTheme.bodyMedium,textAlign: TextAlign.start,textDirection: TextDirection.rtl,)),
+                        Container(width: double.infinity,
+height: 55,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Colors.white
+                            ),
+                            padding:  EdgeInsets.symmetric(vertical: 10,horizontal: 10),child: Row(
+                              children: [
+                                Icon(Icons.date_range,size: 40,color:Color.fromARGB(
+                                    255, 76, 72, 108) ,),
+                                 Container(child: birthday==null?Text(''):Text('$birthday' , style: TextStyle(fontFamily: "shahdFont" , fontSize: 16))),
+                              ],
+                            )),
+                      ],
+                    )),),
 
-                _openDatePickerWithButtonStyle(context);
-              }, text: "تاريخ الميلاد",),
               SizedBox(height: 20,),
               BottonScreen(
                 text: "حفظ",
+
                 methd: () {
                   if (_frmKey.currentState!.validate() == true) {}
                 },
