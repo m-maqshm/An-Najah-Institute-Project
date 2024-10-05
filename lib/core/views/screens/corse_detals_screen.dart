@@ -2,10 +2,12 @@ import 'package:an_najah_project/core/views/widget/ContenDetals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 
+import '../../models/cors.dart';
 import '../widget/sllder.dart';
 
 class CorseDetalsSreen extends StatelessWidget {
-  const CorseDetalsSreen({super.key});
+  Cours c;
+   CorseDetalsSreen({super.key, required this.c});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +41,9 @@ class CorseDetalsSreen extends StatelessWidget {
                               color: Color.fromRGBO(
                                   128, 128, 182, 0.6392156862745098),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('كورس ....',
+                                  Text('${c.courName}',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
@@ -80,7 +82,7 @@ class CorseDetalsSreen extends StatelessWidget {
                       return Container(
                         margin: EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                            color: Color.fromRGBO(128, 128, 182, 1.0),
+                            color: Color.fromRGBO(130, 146, 187, 1.0),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,7 +91,7 @@ class CorseDetalsSreen extends StatelessWidget {
                               Icons.punch_clock,
                               size: 20,
                             ),
-                            Text("120 hours"),
+                            Text("${c.hours}"),
                           ],
                         ),
                         width: 90,
@@ -101,16 +103,25 @@ class CorseDetalsSreen extends StatelessWidget {
                   alignment: Alignment.topRight,
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   width: double.infinity,
-                  // height: MediaQuery.of(context).size.height * 0.1,
                   decoration: BoxDecoration(
                     color: Color.fromRGBO(170, 166, 215, 0.2),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Moer detalse",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22,decoration: TextDecoration.underline),),
-                      ContenrDetalsapp(title: 'Department', text: 'Computrs'),
-                      ContenrDetalsapp(title: 'Department', text: 'Computrs'),
+
+                      Text("تفاصيل اضافية",style:Theme.of(context).textTheme.titleLarge /*TextStyle(fontWeight: FontWeight.bold,fontSize: 25,decoration: TextDecoration.underline)*/,),
+                      ContenrDetalsapp(title: 'الاسم بـ EN', text: '${c.coursNameEn}'),
+                      ContenrDetalsapp(title: 'سعر الكورس', text: '${c.cost}'),
+                      ContenrDetalsapp(title: 'period', text: '${c.period}'),
+                      ContenrDetalsapp(title: 'عدد الساعات', text: '${c.hours}'),
+                      ContenrDetalsapp(title: 'يتطلب امتحان ', text: '${c.hasTest}'),
+                      ContenrDetalsapp(title: 'عدد المقاعد', text: '${c.studetLimit}'),
+                      ContenrDetalsapp(title: 'batch', text: '${c.batch}'),
+                      ContenrDetalsapp(title: 'diplomId', text: '${c.diplomId}'),
+                      ContenrDetalsapp(title: 'المدرب', text: '${c.teachId}'),
+                      ContenrDetalsapp(title: 'تاريخ البداية', text: '${c.startDate}'),
+                      ContenrDetalsapp(title: 'تاريخ النهاية', text: '${c.endDate}'),
                     ],
                   ),
                 ),

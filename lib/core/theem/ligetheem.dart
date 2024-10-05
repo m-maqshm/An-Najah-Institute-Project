@@ -12,6 +12,7 @@ ThemeData aapligetThem = ThemeData(
     bodySmall: TextStyle(fontFamily: "cairo.ttf",fontSize: 12,fontWeight: FontWeight.normal, color: Colors.black),
         bodyLarge: TextStyle(fontFamily: "cairo.ttf",fontSize: 14,fontWeight: FontWeight.normal, color: Colors.black),
         titleLarge: TextStyle(fontFamily: "shorog",fontSize: 36,fontWeight: FontWeight.normal, color: Colors.black),
+        titleMedium: TextStyle(fontFamily: "cairo.ttf",fontSize: 22,fontWeight: FontWeight.normal, color:  Color.fromRGBO(77, 77, 77, 1.0)),
         titleSmall: TextStyle(fontFamily: "cairo.ttf",fontSize: 20,fontWeight: FontWeight.bold, color: Colors.black),
     ),
 
