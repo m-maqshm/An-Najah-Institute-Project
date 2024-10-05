@@ -37,8 +37,13 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_onboarding_slider: ^1.0.11
   provider: ^6.1.2
-  dio:
   flutter_local_notifications: ^17.2.3
+  flutter_localization: ^0.2.2
+  image_picker: ^1.0.7
+  bottom_picker: ^2.8.0
+  carousel_slider: ^5.0.0
+  dio: ^5.7.0
+
 
 dev_dependencies:
   flutter_test:

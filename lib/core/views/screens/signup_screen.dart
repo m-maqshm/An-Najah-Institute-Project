@@ -24,7 +24,6 @@ class SignupScreen extends StatelessWidget {
     return SafeArea(
         child: SafeArea(
       child: Scaffold(
-        appBar: const AppbarWidget(),
         body: Stack(
           children: [
             // الحاوية الزرقاء تأخذ ارتفاع الشاشة بالكامل
@@ -97,8 +96,6 @@ class SignupScreen extends StatelessWidget {
                           validateInput: (value) {
                             if (value!.isEmpty) {
                               return 'يرجى ملئ هذا الحقل';
-                            } else if (value!.length < 8) {
-                              return 'ادخل كلمة مرور لا تقل عن 8 أحرف';
                             }
                             return null;
                           },
@@ -163,7 +160,7 @@ class SignupScreen extends StatelessWidget {
                           height: 15,
                         ),
                         Row(
-                          textDirection: TextDirection.rtl,
+                          // textDirection: TextDirection.rtl,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Padding(
@@ -173,7 +170,9 @@ class SignupScreen extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 25, fontFamily: "mainFont"),
                               ),
-                            ),
+                ),
+
+
                             SizedBox(
                               width: 30,
                             ),
@@ -214,3 +213,6 @@ class SignupScreen extends StatelessWidget {
     ));
   }
 }
+
+// background: rgba(130, 124, 186, 1);
+

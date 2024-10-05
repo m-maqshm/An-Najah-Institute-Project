@@ -12,12 +12,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // الحصول على ارتفاع الشاشة الكاملة
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
-        appBar: const AppbarWidget(),
         body: Stack(
           children: [
             // الحاوية الزرقاء تأخذ ارتفاع الشاشة بالكامل
@@ -75,12 +73,13 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(
-                          // alignment: TextAlign.right.,
+
                           padding: const EdgeInsets.only(bottom: 10),
                           child: const Text("تسجيل الدخول",
                               style: TextStyle(
                                   fontSize: 50, fontFamily: "shorog")),
                         ),
+
                         TextFormScreen(
                             controller: emailController,
                             validateInput: (value) {
@@ -90,9 +89,10 @@ class LoginScreen extends StatelessWidget {
                                 return 'من فضلك ادخل بريدك الكتروني ';
                               }
                               return null;
+
                             },
                             hint:
-                                " ali@gmail.com     :ادخل بريدك الالكتروني هنا مثل",
+                                "ادخل بريدك الالكتروني هنا مثل:ali.gmail.com ",
                             lable: "البريد الالكتروني:",
                             keyboardType: TextInputType.emailAddress),
                         TextFormScreen(

@@ -8,55 +8,29 @@ class ProfileVM{
 massageForm=MassageForm();
   }
 
-  var x={
-  "userId": 12345,
-  "fullNameArabic": "محمد أحمد محمد علي",
-  "fullNameEnglish": "Mohemmad Ahemed Mohemmad Ali",
-  "email": "ahmed@example.com",
-  "phoneNumber": "+967123456789",
-  "dateOfBirth": "1990-05-15",
-  "profilePicture": "assets/images/profile.jpg",
-  "address": {
-  "directorate": "شارع التحرير",
-  "province": "صنعاء",
-  "country": "اليمن",
-
-  },
-
-  "AcademicQualification":
-  {
-  "degree": "بكالوريوس علوم الحاسوب",
-  "university": "جامعة صنعاء",
-  "startDate": "2012-09-01",
-  "endDate": "2016-07-15"
-  }
-
-
-
-  };
-
-gitUserProfile()=>userProfile;
-loadUserProfile(){
-  userProfile["userProfile"]["userId"]=Alnjahapi.profile["userProfile"]["userId"] ;
-  userProfile["userProfile"]["fullNameArabic"]=Alnjahapi.profile["userProfile"]["fullNameArabic"] ;
-  userProfile["userProfile"]["fullNameEnglish"]=Alnjahapi.profile["userProfile"]["fullNameEnglish"];
-  userProfile["userProfile"]["email"]=Alnjahapi.profile["userProfile"]["email"] ;
-  userProfile["userProfile"]["phoneNumber"]=Alnjahapi.profile["userProfile"]["phoneNumber"] ;
-  userProfile["userProfile"]["dateOfBirth"]=Alnjahapi.profile["userProfile"]["dateOfBirth"] ;
-  userProfile["userProfile"]["profilePicture"]=Alnjahapi.profile["userProfile"]["profilePicture"];
-
-  userProfile["userProfile"]["address"]["province"]=Alnjahapi.profile["userProfile"]["address"]["province"] ;
-  userProfile["userProfile"]["address"]["directorate"]=Alnjahapi.profile["userProfile"]["address"]["directorate"];
-  userProfile["userProfile"]["address"]["city"]=Alnjahapi.profile["userProfile"]["address"]["city"] ;
-  userProfile["userProfile"]["address"]["street"]=Alnjahapi.profile["userProfile"]["address"]["street"] ;
-
-  userProfile["userProfile"]["AcademicQualification"]["degree"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["degree"];
-  userProfile["userProfile"]["AcademicQualification"]["university"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["university"] ;
-  userProfile["userProfile"]["AcademicQualification"]["startDate"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["startDate"];
-  userProfile["userProfile"]["AcademicQualification"]["endDate"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["endDate"];
-massageForm?.data=userProfile["userProfile"];
-
-}
+//
+// gitUserProfile()=>userProfile;
+// loadUserProfile(){
+//   userProfile["userProfile"]["userId"]=Alnjahapi.profile["userProfile"]["userId"] ;
+//   userProfile["userProfile"]["fullNameArabic"]=Alnjahapi.profile["userProfile"]["fullNameArabic"] ;
+//   userProfile["userProfile"]["fullNameEnglish"]=Alnjahapi.profile["userProfile"]["fullNameEnglish"];
+//   userProfile["userProfile"]["email"]=Alnjahapi.profile["userProfile"]["email"] ;
+//   userProfile["userProfile"]["phoneNumber"]=Alnjahapi.profile["userProfile"]["phoneNumber"] ;
+//   userProfile["userProfile"]["dateOfBirth"]=Alnjahapi.profile["userProfile"]["dateOfBirth"] ;
+//   userProfile["userProfile"]["profilePicture"]=Alnjahapi.profile["userProfile"]["profilePicture"];
+//
+//   userProfile["userProfile"]["address"]["province"]=Alnjahapi.profile["userProfile"]["address"]["province"] ;
+//   userProfile["userProfile"]["address"]["directorate"]=Alnjahapi.profile["userProfile"]["address"]["directorate"];
+//   userProfile["userProfile"]["address"]["city"]=Alnjahapi.profile["userProfile"]["address"]["city"] ;
+//   userProfile["userProfile"]["address"]["street"]=Alnjahapi.profile["userProfile"]["address"]["street"] ;
+//
+//   userProfile["userProfile"]["AcademicQualification"]["degree"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["degree"];
+//   userProfile["userProfile"]["AcademicQualification"]["university"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["university"] ;
+//   userProfile["userProfile"]["AcademicQualification"]["startDate"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["startDate"];
+//   userProfile["userProfile"]["AcademicQualification"]["endDate"]=Alnjahapi.profile["userProfile"]["AcademicQualification"]["endDate"];
+// massageForm?.data=userProfile["userProfile"];
+//
+// }
 
   editUserProfile({required Map<String,dynamic> profile}){
 

@@ -1,24 +1,24 @@
 
 //start----------------------profile----------------------
 
-class profile {
+import 'package:an_najah_project/core/model/user.dart';
+
+class profile extends User{
   int? userId;
-  String? fullName;
-  String? email;
-  String? phoneNumber;
+
   String? dateOfBirth;
   String? profilePicture;
-  Address? address;
+
   AcademicQualification? academicQualification;
 
   profile(
       {this.userId,
-      this.fullName,
-      this.email,
-      this.phoneNumber,
+      super.fullName,
+      super.email,
+      super.phoneNumber,
       this.dateOfBirth,
       this.profilePicture,
-      this.address,
+      super.address,
       this.academicQualification});
 
   profile.fromJson(Map<String, dynamic> json) {
@@ -28,11 +28,11 @@ class profile {
     phoneNumber = json['phoneNumber'];
     dateOfBirth = json['dateOfBirth'];
     profilePicture = json['profilePicture'];
-    address =
-        json['address'] != null ? new Address.fromJson(json['address']) : null;
+    super.address =
+        json['address'] != null ?  json['address']  : null;
     if (json['academicQualification'] != null) {
 
-    academicQualification=(new AcademicQualification.fromJson(json['academicQualification']));
+    academicQualification=new AcademicQualification.fromJson(json['academicQualification']);
     }
     }
 
@@ -46,7 +46,7 @@ class profile {
     data['dateOfBirth'] = this.dateOfBirth;
     data['profilePicture'] = this.profilePicture;
     if (this.address != null) {
-      data['address'] = this.address!.toJson();
+      data['address'] = this.address! ;
     }
     if (this.academicQualification != null) {
       data['academicQualification'] =
@@ -56,38 +56,37 @@ class profile {
   }
 }
 //----------------------Profile----------------------End
-
-
-//Start----------------------Address----------------------
-
-class Address  {
-  String? street;
-  String? city;
-  String? country;
-  String? postalCode;
-
-  Address({this.street, this.city, this.country, this.postalCode});
-
-  Address.fromJson(Map<String, dynamic> json) {
-    street = json['street'];
-    city = json['city'];
-    country = json['country'];
-    postalCode = json['postalCode'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['street'] = this.street;
-    data['city'] = this.city;
-    data['country'] = this.country;
-    data['postalCode'] = this.postalCode;
-    return data;
-  }
-}
-//----------------------Address----------------------End
+//
+// //Start----------------------Address----------------------
+//
+// class Address  {
+//   String? street;
+//   String? city;
+//   String? country;
+//   String? postalCode;
+//
+//   Address({this.street, this.city, this.country, this.postalCode});
+//
+//   Address.fromJson(Map<String, dynamic> json) {
+//     street = json['street'];
+//     city = json['city'];
+//     country = json['country'];
+//     postalCode = json['postalCode'];
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['street'] = this.street;
+//     data['city'] = this.city;
+//     data['country'] = this.country;
+//     data['postalCode'] = this.postalCode;
+//     return data;
+//   }
+// }
+// //----------------------Address----------------------End
 
 //Start----------------------AcademicQualification----------------------
-  class AcademicQualification {
+class AcademicQualification {
   String? degree;
   String? university;
   String? startDate;
@@ -114,3 +113,4 @@ class Address  {
 }
 
 //----------------------AcademicQualification----------------------End
+
