@@ -24,8 +24,8 @@ class RouteManager{
       case '/edtprofile':return MaterialPageRoute(builder: (ctx)=>EdtProfileScreen());
       case '/cours':return MaterialPageRoute(builder: (ctx)=>CorsScreen());
       case '/login':return MaterialPageRoute(builder: (ctx)=>LoginScreen());
-      case '/sinup':return MaterialPageRoute(builder: (ctx)=>SignupScreen());
-      // case '/testVM':return MaterialPageRoute(builder: (ctx)=>Testvm());
+      case '/signup':return MaterialPageRoute(builder: (ctx)=>SignupScreen());
+       // case '/testVM':return MaterialPageRoute(builder: (ctx)=>Testvm());
       case '/default':return MaterialPageRoute(builder: (ctx)=>SplashScreen());
 
         

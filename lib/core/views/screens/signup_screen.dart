@@ -1,7 +1,9 @@
+import 'package:an_najah_project/core/view_model/userVM.dart';
 import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:an_najah_project/core/views/widget/botton_screen.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // ignore: must_be_immutable
 class SignupScreen extends StatelessWidget {
@@ -10,8 +12,10 @@ class SignupScreen extends StatelessWidget {
   final TextEditingController locationController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  //تفعيل واغلاق التاكد من الحقول الخاصة بالفورم
+  bool isValdite = true;
+  UserVM userVM = UserVM();
   GlobalKey<FormState> _frmKey = GlobalKey();
-
   String gender = "male";
 
   SignupScreen({super.key});
@@ -94,8 +98,11 @@ class SignupScreen extends StatelessWidget {
                           lable: "الاسم الكامل",
                           keyboardType: TextInputType.text,
                           validateInput: (value) {
+                            // التحقق من الاسم الرباعي
                             if (value!.isEmpty) {
                               return 'يرجى ملئ هذا الحقل';
+                            } else if (value.split(' ').length != 4) {
+                              return 'يرجى إدخال اسم رباعي';
                             }
                             return null;
                           },
@@ -105,15 +112,18 @@ class SignupScreen extends StatelessWidget {
                           hint: "من فضلك ادخل رقم هاتفك هنا",
                           lable: "رقم الهاتف",
                           keyboardType: TextInputType.number,
-                          validateInput: (value) {
-                            if (value!.isEmpty) {
-                              return 'يرجى ملئ هذا الحقل';
-                            } else if (!RegExp(r'^7[1378]\d{7}$')
-                                .hasMatch(value!)) {
-                              return 'ادخل رقم هاتف صحيح ';
-                            }
-                            return null;
-                          },
+                          validateInput: isValdite
+                              ? (value) {
+                                  // التحقق من رقم الهاتف اليمني
+                                  if (value!.isEmpty) {
+                                    return 'يرجى ملئ هذا الحقل';
+                                  } else if (!RegExp(r'^(77|73|78|70|71)\d{7}$')
+                                      .hasMatch(value)) {
+                                    return 'يرجى إدخال رقم هاتف يمني صحيح مكون من 9 أرقام ويبدأ ب 77 أو 73 أو 78 أو 70 أو 71';
+                                  }
+                                  return null;
+                                }
+                              : null,
                         ),
                         TextFormScreen(
                           controller: locationController,
@@ -121,12 +131,19 @@ class SignupScreen extends StatelessWidget {
                               "من فضلك ادخل عنوانك هنا مثل: حضرموت / القطن / الريضة ",
                           lable: "العنوان:",
                           keyboardType: TextInputType.visiblePassword,
-                          validateInput: (value) {
-                            if (value!.isEmpty) {
-                              return 'يرجى ادخال عنوانك';
-                            }
-                            return null;
-                          },
+                          validateInput: isValdite
+                              ? (value) {
+                                  // التحقق من العنوان
+                                  if (value!.isEmpty) {
+                                    return 'يرجى إدخال عنوانك';
+                                  } else if (!RegExp(
+                                          r'^[\u0621-\u064A\s]+ \/ [\u0621-\u064A\s]+ \/ [\u0621-\u064A\s]+ \/ [\u0621-\u064A\s]+$')
+                                      .hasMatch(value)) {
+                                    return 'يرجى إدخال عنوان صحيح بالتنسيق: المحافظة / المديرية / المدينة / الحارة';
+                                  }
+                                  return null;
+                                }
+                              : null,
                         ),
                         TextFormScreen(
                           controller: emailController,
@@ -134,28 +151,32 @@ class SignupScreen extends StatelessWidget {
                               " ali@gmail.com     :ادخل بريدك الالكتروني هنا مثل",
                           lable: "البريد الالكتروني:",
                           keyboardType: TextInputType.emailAddress,
-                          validateInput: (value) {
-                            if (value!.isEmpty ||
-                                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(value!)) {
-                              return 'ادخل بريد الكتروني صحيح';
-                            }
-                            return null;
-                          },
+                          validateInput: isValdite
+                              ? (value) {
+                                  if (value!.isEmpty ||
+                                      !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                          .hasMatch(value!)) {
+                                    return 'ادخل بريد الكتروني صحيح';
+                                  }
+                                  return null;
+                                }
+                              : null,
                         ),
                         TextFormScreen(
                             controller: passwordController,
                             hint: "من فضلك اكتب كلمة السر هنا ",
                             lable: "كلمة المرور:",
                             keyboardType: TextInputType.visiblePassword,
-                            validateInput: (value) {
-                              if (value!.isEmpty) {
-                                return 'يرجى ملئ هذا الحقل';
-                              } else if (value.length > 8) {
-                                return 'ادخل كلمة مرور لا تقل عن 8 أحرف ';
-                              }
-                              return null;
-                            }),
+                            validateInput: isValdite
+                                ? (value) {
+                                    if (value!.isEmpty) {
+                                      return 'يرجى ملئ هذا الحقل';
+                                    } else if (value.length > 8) {
+                                      return 'ادخل كلمة مرور لا تقل عن 8 أحرف ';
+                                    }
+                                    return null;
+                                  }
+                                : null),
                         const SizedBox(
                           height: 15,
                         ),
@@ -170,9 +191,7 @@ class SignupScreen extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 25, fontFamily: "mainFont"),
                               ),
-                ),
-
-
+                            ),
                             SizedBox(
                               width: 30,
                             ),
@@ -194,8 +213,34 @@ class SignupScreen extends StatelessWidget {
                         ),
                         BottonScreen(
                           text: "تسجيل",
-                          methd: () {
-                            if (_frmKey.currentState!.validate() == true) {}
+                          methd: () async {
+                            if (_frmKey.currentState!.validate() == true||!isValdite) {
+                              Object? result = await userVM.signup(
+                                  fullName: fullnameController.text,
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                  phoneNo: phoneController.text,
+                                  address: locationController.text);
+                              print(result);
+                              result != null
+                                  ? Fluttertoast.showToast(
+                                      msg: "لقد تم تسجيلك في النظام بنجاح ",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 4,
+                                      backgroundColor: Colors.green,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0)
+                                  : Fluttertoast.showToast(
+                                      msg:
+                                          "هناك خطاء لم تتم عملية التسجيل في النظام اعد المحاولة لاحقاَ",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 4,
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0);
+                            }
                           },
                         ),
                         const SizedBox(
@@ -215,4 +260,3 @@ class SignupScreen extends StatelessWidget {
 }
 
 // background: rgba(130, 124, 186, 1);
-

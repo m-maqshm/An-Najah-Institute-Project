@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteManager.generateRoute,
 
-        initialRoute: '/cou',
+        initialRoute: '/signup',
 
         title: 'Flutter Demo',
         theme: aapligetThem,

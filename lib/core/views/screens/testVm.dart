@@ -2,6 +2,7 @@
 // import 'package:an_najah_project/core/model/course.dart';
 // import 'package:an_najah_project/core/view_model/courseVM.dart';
 // import 'package:an_najah_project/core/view_model/profileVM.dart';
+// import 'package:an_najah_project/core/view_model/userVM.dart';
 // import 'package:flutter/material.dart';
 //
 // class Testvm extends StatefulWidget {
@@ -14,6 +15,7 @@
 // class _TestvmState extends State<Testvm> {
 //
 //   Coursevm? coursevm;
+//   UserVM userVM=UserVM();
 //   Course course=Course();
 //   ProfileVM profileVM=ProfileVM();
 //   @override
@@ -31,8 +33,12 @@
 //           await coursevm?.loadAllCoursesForSpecificDiploma();
 //          course=await coursevm?.getSpecificCourseInformation(courseName: "تطوير تطبيقات باستخدام Flutter");
 //          // ProfileVM profileVM=ProfileVM();
-// profileVM.loadUserProfile();
+//          Object? result=await userVM.login(
+//           username: 'emilys',
+//               password: 'emilyspass');
+//          result==null?print("null token"):print("result =${result.toString()}");
 //
+//             result=await userVM.signup();
 //           setState(() {
 //
 //           });

@@ -12,12 +12,10 @@ class HttpHelper{
    return httpHelper!;
   }
   Dio d=Dio();
-  Future<Response> getRequest({required String url,Object? data,Options? options})async{
-    return await d.get(url,data: data,options:options );
+  Future<Response> getRequest({required String url})async{
+    return await d.get(url );
   }
   Future<Response> postRequest({required String url,required dynamic data,Options? options})async{
-    print("d is dio");
-
-    return await d.post(url,data: data,options: options);
+         return await d.post(url,data: data,options: options);
   }
 }
