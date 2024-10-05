@@ -15,11 +15,13 @@ class _TestvmState extends State<Testvm> {
 
   Coursevm? coursevm;
   Course course=Course();
+  ProfileVM profileVM=ProfileVM();
   @override
   void initState() {
     // TODO: implement initState
 
       coursevm=Coursevm();
+
   }
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class _TestvmState extends State<Testvm> {
           await coursevm?.loadAllCoursesForSpecificDiploma();
          course=await coursevm?.getSpecificCourseInformation(courseName: "تطوير تطبيقات باستخدام Flutter");
          // ProfileVM profileVM=ProfileVM();
+profileVM.loadUserProfile();
 
           setState(() {
 

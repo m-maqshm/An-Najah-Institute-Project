@@ -106,26 +106,27 @@ class Alnjahapi {
 static Map<String,dynamic> profile={
   "userProfile": {
     "userId": 12345,
-    "fullName": "محمد أحمد محمد علي",
+    "fullNameArabic": "محمد أحمد محمد علي",
+    "fullNameEnglish": "Mohemmad Ahemed Mohemmad Ali",
     "email": "ahmed@example.com",
     "phoneNumber": "+967123456789",
     "dateOfBirth": "1990-05-15",
-    "profilePicture": "https://example.com/profile_picture.jpg",
+    "profilePicture": "assets/images/profile.jpg",
     "address": {
-      "street": "شارع التحرير",
-      "city": "صنعاء",
+      "directorate": "شارع التحرير",
+      "province": "صنعاء",
       "country": "اليمن",
-      "postalCode": "12345"
+
     },
   
-    "AcademicQualification": [
+    "AcademicQualification":
       {
         "degree": "بكالوريوس علوم الحاسوب",
         "university": "جامعة صنعاء",
         "startDate": "2012-09-01",
         "endDate": "2016-07-15"
       }
-    ],
+
     
      
   }

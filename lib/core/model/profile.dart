@@ -1,3 +1,6 @@
+
+//start----------------------profile----------------------
+
 class profile {
   int? userId;
   String? fullName;
@@ -6,7 +9,7 @@ class profile {
   String? dateOfBirth;
   String? profilePicture;
   Address? address;
-  List<AcademicQualification>? academicQualification;
+  AcademicQualification? academicQualification;
 
   profile(
       {this.userId,
@@ -28,12 +31,11 @@ class profile {
     address =
         json['address'] != null ? new Address.fromJson(json['address']) : null;
     if (json['academicQualification'] != null) {
-      academicQualification = <AcademicQualification>[];
-      json['academicQualification'].forEach((v) {
-        academicQualification!.add(new AcademicQualification.fromJson(v));
-      });
+
+    academicQualification=(new AcademicQualification.fromJson(json['academicQualification']));
     }
-  }
+    }
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -48,13 +50,17 @@ class profile {
     }
     if (this.academicQualification != null) {
       data['academicQualification'] =
-          this.academicQualification!.map((v) => v.toJson()).toList();
+          this.academicQualification!.toJson();
     }
     return data;
   }
 }
+//----------------------Profile----------------------End
 
-class Address {
+
+//Start----------------------Address----------------------
+
+class Address  {
   String? street;
   String? city;
   String? country;
@@ -78,8 +84,10 @@ class Address {
     return data;
   }
 }
+//----------------------Address----------------------End
 
-class AcademicQualification {
+//Start----------------------AcademicQualification----------------------
+  class AcademicQualification {
   String? degree;
   String? university;
   String? startDate;
@@ -104,3 +112,5 @@ class AcademicQualification {
     return data;
   }
 }
+
+//----------------------AcademicQualification----------------------End
