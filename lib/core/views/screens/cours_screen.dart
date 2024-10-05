@@ -1,11 +1,13 @@
+import 'package:an_najah_project/core/view_models/corsvm.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/cors.dart';
 import '../widget/appbar_widget.dart';
 
-class Cors_Screen extends StatelessWidget {
-  const Cors_Screen({super.key});
-
-  @override
+class CorsScreen extends StatelessWidget {
+   CorsScreen({super.key});
+Corsvm cvm = Corsvm();
+@override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -77,41 +79,50 @@ class Cors_Screen extends StatelessWidget {
                           margin: EdgeInsets.only(right: 20,top: 3,),
                           child: Text('الكورسات المتاحة',style: Theme.of(context).textTheme.titleLarge,textAlign:TextAlign.right,textDirection: TextDirection.rtl),),
                         Expanded(
-                          child: ListView.builder(
-                            itemCount: 8,itemBuilder:(context, index) {
-                              return Container(
-                                margin: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                height: 110,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Color.fromARGB(39, 187, 173, 255)),
-                                  borderRadius: BorderRadius.circular(20),
-                                color: Color.fromARGB(39, 187, 173, 255),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  textDirection: TextDirection.rtl,
-                                  children: [
-
-                                 Expanded(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      textDirection: TextDirection.rtl,
-                                      children: [Container(padding: EdgeInsets.only(right: 10),child: Text("كورس الأوفس",style: Theme.of(context).textTheme.titleSmall)),
-                                        Text('الكورس يقدم لجميع المشاركين الخلفية الشاملة عن اهم برامج شركة مايكروسوفت على  برامج شركة مايكروسوفت على  برامج شركة مايكروسوفت على  برامج شركة مايكروسوفت على الاطلاق Word ,PowerPoint and Excel.',
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 3,textDirection: TextDirection.rtl,textAlign: TextAlign.right,style: Theme.of(context).textTheme.bodySmall,),
-                                      ],
+                          child: FutureBuilder(future: cvm.getCours(),
+                            builder: (context, snapshot) {
+                              return ListView.builder(
+                                itemCount: snapshot.data?.length,itemBuilder:(context, index) {
+                                  return InkWell(
+                                    onTap: (){
+                                      Navigator.pushNamed(context, '/corsdetals',arguments: snapshot.data?[index]);
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
+                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                      height: 110,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Color.fromARGB(39, 187, 173, 255)),
+                                        borderRadius: BorderRadius.circular(20),
+                                      color: Color.fromARGB(39, 187, 173, 255),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        textDirection: TextDirection.rtl,
+                                        children: [
+                                    
+                                       Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            textDirection: TextDirection.rtl,
+                                            children: [Container(padding: EdgeInsets.only(right: 10),child: Text('${snapshot.data?[index].courName}',style: Theme.of(context).textTheme.titleSmall)),
+                                              Text('${snapshot.data?[index].description}',
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 3,textDirection: TextDirection.rtl,textAlign: TextAlign.right,style: Theme.of(context).textTheme.bodySmall,),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(width: 100,height: 80,decoration: BoxDecoration(
+                                                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                    image: DecorationImage(
+                                      image: AssetImage('assets/images/p1.jpg',),fit: BoxFit.fill),
+                                                                   ))
+                                      ],),
                                     ),
-                                  ),
-                                  Container(width: 100,height: 80,decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/p1.jpg',),fit: BoxFit.fill),
-                           ))
-                                ],),
-                              );
-                            } ,),
+                                  );
+                                } ,);
+                            }
+                          ),
                         )
                       ],
                     ),

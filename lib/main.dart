@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: localization.localizationsDelegates,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteManager.generateRoute,
-        initialRoute: '/edtprofile',
 
+        initialRoute: '/cours',
         title: 'Flutter Demo',
         theme: aapligetThem,
 

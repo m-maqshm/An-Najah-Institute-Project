@@ -13,8 +13,11 @@ class ContenrDetalsapp extends StatelessWidget {
         textDirection: TextDirection.rtl,
 crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-      Text('$title  : ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),textAlign: TextAlign.right,textDirection: TextDirection.rtl,),
-          Text('$text',style: TextStyle(fontSize: 20),textAlign: TextAlign.right,textDirection: TextDirection.rtl)
+      Text('$title  : ',style: Theme.of(context).textTheme.titleMedium /*TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Color.fromRGBO(
+          30, 42, 72, 1.0))*/,textAlign: TextAlign.right,textDirection: TextDirection.rtl,),
+          Text('$text',style: Theme.of(context).textTheme.titleMedium /*TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Color.fromRGBO(
+          30, 42, 72, 1.0))*/,textAlign: TextAlign.right,textDirection: TextDirection.rtl,),
+
 
     ],),);
   }
