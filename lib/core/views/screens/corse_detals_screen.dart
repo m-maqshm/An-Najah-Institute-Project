@@ -1,8 +1,6 @@
 import 'package:an_najah_project/core/views/widget/ContenDetals.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 
-import '../widget/sllder.dart';
 
 class CorseDetalsSreen extends StatelessWidget {
   const CorseDetalsSreen({super.key});

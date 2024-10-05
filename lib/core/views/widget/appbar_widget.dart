@@ -11,13 +11,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       // shape: RoundedRectangleBorder(
       //     borderRadius: BorderRadius.vertical(bottom: Radius.circular(40))),
       backgroundColor: const Color.fromARGB(255, 138, 168,217),
-      title: const ListTile(
-        leading: Padding(
-          padding: EdgeInsets.only(top: 5),
-          child: CircleAvatar( child: Icon(Icons.person),),
-
-        ),
-        child: const ListTile(
+      title: const   ListTile(
           leading: Padding(
             padding: EdgeInsets.only(top: 5),
             child: CircleAvatar(
@@ -34,7 +28,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
           subtitle: Text("alNajah@gmail.com",
               style: TextStyle(fontSize: 12, color: Colors.white)),
         ),
-      ),
+
       actions: const [
         Padding(
           padding: EdgeInsets.only(right: 15),

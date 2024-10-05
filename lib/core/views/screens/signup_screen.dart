@@ -170,9 +170,9 @@ class SignupScreen extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 25, fontFamily: "mainFont"),
                               ),
-                 fontSize: 25, fontFamily: "mainFont"),
+                ),
 
-                            ),
+
                             SizedBox(
                               width: 30,
                             ),

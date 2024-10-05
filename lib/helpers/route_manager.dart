@@ -1,8 +1,13 @@
 
-import 'package:an_najah_project/core/views/screens/diplomas_available.dart';
-import 'package:an_najah_project/core/views/screens/profile_screen.dart';
 import 'package:an_najah_project/core/views/screens/signup_screen.dart';
 import 'package:an_najah_project/core/views/screens/login_screen.dart';
+import 'package:flutter/material.dart';
+
+import '../core/views/screens/cors.dart';
+import '../core/views/screens/corse_detals_screen.dart';
+import '../core/views/screens/edt_profile_screen.dart';
+import '../core/views/screens/home_screen.dart';
+import '../core/views/screens/spalsh_screen.dart';
 
 
 
