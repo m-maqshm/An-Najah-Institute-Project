@@ -1,3 +1,5 @@
+
+import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,6 @@ import 'package:flutter/material.dart';
 import '../widget/botton_screen.dart';
 import '../widget/imge_profile.dart';
 import '../widget/text_form_screen.dart';
-import 'package:bottom_picker/bottom_picker.dart';
 // import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
