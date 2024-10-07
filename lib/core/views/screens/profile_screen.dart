@@ -15,20 +15,26 @@ class ProfileScreen extends StatelessWidget {
         appBar: AppbarWidget(),
         backgroundColor: Color.fromRGBO(145, 139, 199, 1),
         floatingActionButton: Container(
-          height: height*.06,
-          width: width*.3,
+          height: height * .06,
+          width: width * .3,
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            color:  Color.fromRGBO(2, 0, 21, 0.34),
+            color: Color.fromRGBO(2, 0, 21, 0.34),
           ),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Icon(Icons.edit , color: Colors.white,),
+                child: Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
               ),
-              Text("edite" , style: TextStyle(color: Colors.white),)
+              Text(
+                "edite",
+                style: TextStyle(color: Colors.white),
+              )
             ],
           ),
         ),
@@ -48,10 +54,12 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: const Text("loqmanbashreef@gmail.com" , style: TextStyle(color: Colors.white),),
+                child: const Text(
+                  "loqmanbashreef@gmail.com",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
@@ -114,7 +122,6 @@ class ProfileScreen extends StatelessWidget {
                         property: "Day of Birth : ",
                         value: "1/2/2000",
                       ),
-                      
                     ],
                   ),
                 ),
