@@ -6,7 +6,7 @@ class ShowAds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width ;
+   // width = MediaQuery.of(context).size.width ;
     return CarouselSlider(
       options: CarouselOptions(
         height: MediaQuery.of(context).size.height * 1 / 4,
