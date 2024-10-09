@@ -1,10 +1,11 @@
-import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:an_najah_project/core/views/widget/botton_screen.dart';
+import 'package:an_najah_project/core/views/widget/show_ads.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
 
-
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
+  GlobalKey<FormState> frmKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -12,18 +13,16 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // الحصول على ارتفاع الشاشة الكاملة
-    final double screenHeight = MediaQuery.of(context).size.height;
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: Scaffold(
-        appBar: const AppbarWidget(),
         body: Stack(
           children: [
-            // الحاوية الزرقاء تأخذ ارتفاع الشاشة بالكامل
             Container(
               color: const Color.fromARGB(255, 129, 128, 182),
-              height: screenHeight, // استخدام ارتفاع الشاشة الكامل
+              height: height,
               alignment: Alignment.topCenter,
             ),
             Positioned(
@@ -48,14 +47,14 @@ class LoginScreen extends StatelessWidget {
               child: Container(
                 height: 200,
                 width: 20,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/alnajah.png"),
-                      fit: BoxFit.cover),
-                ),
+                child: ShowAds(),
+                // decoration: const BoxDecoration(
+                //   image: DecorationImage(
+                //       image: AssetImage("assets/images/alnajah.png"),
+                //       fit: BoxFit.cover),
+                // ),
               ),
             ),
-
             Positioned(
               top: 200,
               left: 0,
@@ -70,72 +69,80 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: const Text(
-                          "login",
-                          style:
-                              TextStyle(fontSize: 70, fontFamily: "mainFont"),
-                        ),
-                      ),
-                      TextFormScreen(
-                          controller: emailController,
-                          validateInput: (value) {
-                            // if (value!.isEmpty) {
-                            //   return 'Enter a valid password!';
-                            // }else if (value!.length<8) {
-                            //   return ' password should be at least 8 chars';
-                            // }else if (!RegExp("[a-z]").hasMatch(value!)) {
-                            //   return ' password should at least one lowercase chars';
-                            // }else if (!RegExp("[A-Z]").hasMatch(value!)) {
-                            //   return ' password should at least one uppercase chars';
-                            // }else if (!RegExp("[!#\$%&'*+-/=?^_`{|}~@]").hasMatch(value!)) {
-                            //   return ' password should at least one symbol';
-                            // }else if (!RegExp("[0-9]").hasMatch(value!)) {
-                            //   return ' password should at least one number';
-                            // }
-                            // return null;
-                          },
-                          hint: "Enter your email eg. ali@gmail.com",
-                          lable: "Email:",
-                          keyboardType: TextInputType.emailAddress),
-                      TextFormScreen(
-                          controller: passwordController,
-                          hint: "Enter your password ,please ",
-                          lable: "Password:",
-                          keyboardType: TextInputType.visiblePassword),
-                      BottonScreen(text: 'login',methd:(){
-                        print('object');
-                      },),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Don't have an account? ..",
-                            style:
-                                TextStyle(fontFamily: "mainFont", fontSize: 20),
-                          ),
-                          const SizedBox(width: 20),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamedAndRemoveUntil(context, "/sinup"  ,(Route)=> false );
-                            },
-                            child: const Text(
-                              "Sign up",
+                  child: Form(
+                    key: frmKey,
+                    child: Column(
+                      children: [
+                        Container(
+                          // padding: const EdgeInsets.only(bottom: 10 , top: 15),
+                          margin: EdgeInsets.all(40),
+                          child: const Text("تسجيــــل الدخـــول",
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 95, 8, 236),
-                                  fontFamily: "mainFont",
-                                  fontSize: 20),
+                                  fontSize: 30, fontFamily: "shorog")),
+                        ),
+                        TextFormScreen(
+                            controller: emailController,
+                            validateInput: (value) {
+                              if (value!.isEmpty ||
+                                  !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(value)) {
+                                return 'من فضلك ادخل بريدك الكتروني ';
+                              }
+                              return null;
+                            },
+                            hint:
+                                "ادخل بريدك الالكتروني هنا مثل:ali.gmail.com ",
+                            lable: "البريد الالكتروني:",
+                            keyboardType: TextInputType.emailAddress),
+                        TextFormScreen(
+                            validateInput: (x) => x != null && x.isNotEmpty
+                                ? null
+                                : "من فضلك اكتب كلمة السر",
+                            controller: passwordController,
+                            hint: "من فضلك اكتب كلمة السر هنا ",
+                            lable: "كلمة المرور:",
+                            keyboardType: TextInputType.visiblePassword),
+                        SizedBox(
+                          height: height * 0.07,
+                        ),
+                        BottonScreen(
+                          text: 'دخول',
+                          methd: () {
+                            if (frmKey.currentState!.validate() == true) {}
+                            print('object');
+                          },
+                        ),
+                        SizedBox(
+                          height: height * 0.03,
+                        ),
+                        Row(
+                          textDirection: TextDirection.rtl,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "لا تملك حساب...",
+                              style: TextStyle(
+                                  fontFamily: "cairo.ttf", fontSize: 15),
+                              textAlign: TextAlign.right,
+                              textDirection: TextDirection.rtl,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                             SizedBox(width:width *0.06 ),
+                            InkWell(
+                              onTap: () {},
+                              child: const Text(
+                                "سجل من هنا",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 95, 8, 236),
+                                    fontFamily: "cairo.ttf",
+                                    fontSize: 15),
+                                textAlign: TextAlign.right,
+                                textDirection: TextDirection.rtl,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

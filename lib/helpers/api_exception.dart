@@ -8,7 +8,7 @@
 //       }
 //       case DioExceptionType.connectionTimeout :{
 //         return "server take long time to response";
-//       }
+ //   }
 //       case DioExceptionType.receiveTimeout :{
 //         return "didn't get any response from server";
 //       }
