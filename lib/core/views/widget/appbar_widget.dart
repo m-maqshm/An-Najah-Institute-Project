@@ -1,46 +1,75 @@
 import 'package:flutter/material.dart';
+import 'notificationdialog.dart'; 
 
-class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppbarWidget({super.key});
+class AppbarWidget extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  final List<String> notifications = ['الإشعار 1', 'الإشعار 2', 'الإشعار...................... 3'];
+
+  AppbarWidget({super.key, required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
-
-      // shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.vertical(bottom: Radius.circular(40))),
-      backgroundColor: const Color.fromARGB(255, 138, 168,217),
-      title: const   ListTile(
-          leading: Padding(
-            padding: EdgeInsets.only(top: 5),
-            child: CircleAvatar(
-              child: Icon(Icons.person),
+    return Container(
+      height: height * 0.06,
+      width: width,
+      color: const Color.fromARGB(255, 64, 161, 194),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            margin: EdgeInsets.only(right: 20),
+            child: InkWell(
+              onTap: () {
+                scaffoldKey.currentState?.openDrawer();
+              },
+              child: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
             ),
           ),
-          title: Padding(
-            padding: EdgeInsets.only(top: 5),
-            child: Text(
-              "Al-Najah Institute",
-              style: TextStyle(fontSize: 15, color: Colors.white),
-            ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: IconButton(
+                  icon: Icon(Icons.notifications, color: Colors.white, size: 25),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return NotificationDialog(notifications: notifications); 
+                      },
+                    );
+                  },
+                ),
+              ),
+              Positioned(
+                right: 10,
+                top: 4,
+                child: Container(
+                  padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    '3',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          subtitle: Text("alNajah@gmail.com",
-              style: TextStyle(fontSize: 12, color: Colors.white)),
-        ),
-
-      actions: const [
-        Padding(
-          padding: EdgeInsets.only(right: 15),
-          child: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(60);
 }

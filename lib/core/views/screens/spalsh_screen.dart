@@ -22,8 +22,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Image.asset('assets/images/an_najaj_pic.jpg'),
-        Text('An Najah '),
+        children: [Image.asset('assets/images/alnajah.png'),
+        Text('معهد النجاح للتدريب والاستشارات بالقطن برحب بكم ' , style: TextStyle(fontSize: 15 , fontWeight: FontWeight.bold),),
           SizedBox(height: 30,),
           Center(child: CircularProgressIndicator(),
           ),
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
   home(){
     Future.delayed(Duration(seconds: 3),(){
 
-      Navigator.pushNamedAndRemoveUntil(context, "/home",(route)=>false);
+      Navigator.pushNamedAndRemoveUntil(context, "/diplom",(route)=>false);
     });
   }
 

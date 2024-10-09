@@ -33,6 +33,7 @@ class TextFormScreen extends StatelessWidget {
             controller: controller,
             validator: validateInput,
             keyboardType: keyboardType,
+            style: TextStyle(fontSize: 13),
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(horizontal: 10 , vertical: 5),
               hintText: hint,
