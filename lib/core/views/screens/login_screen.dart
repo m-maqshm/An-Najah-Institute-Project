@@ -1,5 +1,5 @@
-
 import 'package:an_najah_project/core/views/widget/botton_screen.dart';
+import 'package:an_najah_project/core/views/widget/show_ads.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,16 +13,16 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
-            // الحاوية الزرقاء تأخذ ارتفاع الشاشة بالكامل
             Container(
               color: const Color.fromARGB(255, 129, 128, 182),
-              height: screenHeight, // استخدام ارتفاع الشاشة الكامل
+              height: height,
               alignment: Alignment.topCenter,
             ),
             Positioned(
@@ -47,14 +47,14 @@ class LoginScreen extends StatelessWidget {
               child: Container(
                 height: 200,
                 width: 20,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/alnajah.png"),
-                      fit: BoxFit.cover),
-                ),
+                child: ShowAds(),
+                // decoration: const BoxDecoration(
+                //   image: DecorationImage(
+                //       image: AssetImage("assets/images/alnajah.png"),
+                //       fit: BoxFit.cover),
+                // ),
               ),
             ),
-
             Positioned(
               top: 200,
               left: 0,
@@ -74,13 +74,12 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(
-
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: const Text("تسجيل الدخول",
+                          // padding: const EdgeInsets.only(bottom: 10 , top: 15),
+                          margin: EdgeInsets.all(40),
+                          child: const Text("تسجيــــل الدخـــول",
                               style: TextStyle(
-                                  fontSize: 50, fontFamily: "shorog")),
+                                  fontSize: 30, fontFamily: "shorog")),
                         ),
-
                         TextFormScreen(
                             controller: emailController,
                             validateInput: (value) {
@@ -90,7 +89,6 @@ class LoginScreen extends StatelessWidget {
                                 return 'من فضلك ادخل بريدك الكتروني ';
                               }
                               return null;
-
                             },
                             hint:
                                 "ادخل بريدك الالكتروني هنا مثل:ali.gmail.com ",
@@ -104,6 +102,9 @@ class LoginScreen extends StatelessWidget {
                             hint: "من فضلك اكتب كلمة السر هنا ",
                             lable: "كلمة المرور:",
                             keyboardType: TextInputType.visiblePassword),
+                        SizedBox(
+                          height: height * 0.07,
+                        ),
                         BottonScreen(
                           text: 'دخول',
                           methd: () {
@@ -111,32 +112,29 @@ class LoginScreen extends StatelessWidget {
                             print('object');
                           },
                         ),
-                        const SizedBox(
-                          height: 15,
+                        SizedBox(
+                          height: height * 0.03,
                         ),
                         Row(
                           textDirection: TextDirection.rtl,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              "لا تملك حساب..",
+                              "لا تملك حساب...",
                               style: TextStyle(
-                                  fontFamily: "cairo.ttf", fontSize: 18),
+                                  fontFamily: "cairo.ttf", fontSize: 15),
                               textAlign: TextAlign.right,
                               textDirection: TextDirection.rtl,
                             ),
-                            const SizedBox(width: 20),
+                             SizedBox(width:width *0.06 ),
                             InkWell(
-                              onTap: () {
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, "/sinup", (Route) => false);
-                              },
+                              onTap: () {},
                               child: const Text(
                                 "سجل من هنا",
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 95, 8, 236),
                                     fontFamily: "cairo.ttf",
-                                    fontSize: 21),
+                                    fontSize: 15),
                                 textAlign: TextAlign.right,
                                 textDirection: TextDirection.rtl,
                               ),

@@ -1,7 +1,6 @@
 import 'package:an_najah_project/core/view_models/corsvm.dart';
 import 'package:flutter/material.dart';
 
-import '../widget/appbar_widget.dart';
 
 // ignore: must_be_immutable
 class CorsScreen extends StatelessWidget {
@@ -9,17 +8,16 @@ class CorsScreen extends StatelessWidget {
   Corsvm cvm = Corsvm();
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
+    final double height = MediaQuery.of(context).size.height;
     return SafeArea(
         child: SafeArea(
       child: Scaffold(
-        appBar: AppbarWidget(),
         body: Stack(
           children: [
-            // الحاوية الزرقاء تأخذ ارتفاع الشاشة بالكامل
+            
             Container(
               color: const Color.fromARGB(255, 129, 128, 182),
-              height: screenHeight, // استخدام ارتفاع الشاشة الكامل
+              height: height, // استخدام ارتفاع الشاشة الكامل
               alignment: Alignment.topCenter,
             ),
             Positioned(
@@ -53,15 +51,18 @@ class CorsScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.14,
                     color: Color.fromARGB(63, 187, 173, 255),
-                    child: Text(
-                      'دبلوم الحاسب الالي ',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontFamily: 'cairo.ttf',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 10 , bottom: 10),
+                      child: Text(
+                        'دبلوم الحاسب الالي ',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontFamily: 'cairo.ttf',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                        textAlign: TextAlign.right,
                       ),
-                      textAlign: TextAlign.right,
                     ))),
             Positioned(
               top: 250,
@@ -84,10 +85,13 @@ class CorsScreen extends StatelessWidget {
                         right: 20,
                         top: 3,
                       ),
-                      child: Text('الكورسات المتاحة',
-                          style: Theme.of(context).textTheme.titleLarge,
-                          textAlign: TextAlign.right,
-                          textDirection: TextDirection.rtl),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10 , bottom: 10),
+                        child: Text('الكورسات المتاحة :',
+                            style: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.right,
+                            textDirection: TextDirection.rtl),
+                      ),
                     ),
                     Expanded(
                       child: FutureBuilder(
@@ -98,15 +102,15 @@ class CorsScreen extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   onTap: () {
-                                    Navigator.pushNamed(context, '/corsdetals',
-                                        arguments: snapshot.data?[index]);
+                                    // Navigator.pushNamed(context, '/',
+                                    //     arguments: snapshot.data?[index]);
                                   },
                                   child: Container(
                                     margin: EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 10),
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 10),
-                                    height: 110,
+                                    height: height*0.13,
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                           color: Color.fromARGB(

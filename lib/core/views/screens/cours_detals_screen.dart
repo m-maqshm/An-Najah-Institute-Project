@@ -1,14 +1,16 @@
 import 'package:an_najah_project/core/views/widget/ContenDetals.dart';
+import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/cors.dart';
 
 // ignore: must_be_immutable
-class CorseDetalsSreen extends StatelessWidget {
+class CoursDetalsSreen extends StatelessWidget {
   Cours c;
-   CorseDetalsSreen({super.key, required this.c});
+   CoursDetalsSreen({super.key, required this.c});
   @override
   Widget build(BuildContext context) {
+      final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>(); 
     return Scaffold(
       body: SingleChildScrollView(
         child: SingleChildScrollView(
@@ -16,6 +18,7 @@ class CorseDetalsSreen extends StatelessWidget {
             // margin: EdgeInsets.symmetric(horizontal: 5),
             child: Column(
               children: [
+                AppbarWidget(scaffoldKey: scaffoldKey),
                 Container(
                   child: Stack(
                     children: [
