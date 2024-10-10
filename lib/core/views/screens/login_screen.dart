@@ -1,18 +1,22 @@
+import 'package:an_najah_project/core/view_model/userVM.dart';
 import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:an_najah_project/core/views/widget/botton_screen.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatelessWidget {
   GlobalKey<FormState> frmKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+
   LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
+    UserVM userVM=UserVM();
 
     return SafeArea(
       child: Scaffold(
@@ -105,8 +109,32 @@ class LoginScreen extends StatelessWidget {
                             keyboardType: TextInputType.visiblePassword),
                         BottonScreen(
                           text: 'دخول',
-                          methd: () {
-                            if (frmKey.currentState!.validate() == true) {}
+                          methd: ()async {
+                            if (frmKey.currentState!.validate() == true) {
+                          String? result=  await userVM.login(email: emailController.text, password: passwordController.text);
+                          print(result.toString());
+
+    result != null
+    ? Fluttertoast.showToast(
+    msg: "لقد تم تسجيل دخولك في النظام بنجاح ",
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.CENTER,
+    timeInSecForIosWeb: 4,
+    backgroundColor: Colors.green,
+    textColor: Colors.white,
+    fontSize: 16.0)
+        : Fluttertoast.showToast(
+    msg:
+    "هناك خطاء لم تتم عملية تسجيل الدخول في النظام اعد المحاولة لاحقاَ",
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.CENTER,
+    timeInSecForIosWeb: 4,
+    backgroundColor: Colors.red,
+    textColor: Colors.white,
+    fontSize: 16.0);
+    }
+
+
                             print('object');
                           },
                         ),

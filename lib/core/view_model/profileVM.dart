@@ -1,4 +1,4 @@
-import 'package:an_najah_project/core/data/alnjahAPI.dart';
+
 import 'package:an_najah_project/helpers/massage_form.dart';
 
 class ProfileVM{
@@ -7,6 +7,39 @@ class ProfileVM{
   ProfileVM(){
 massageForm=MassageForm();
   }
+
+
+
+}
+
+
+
+
+
+
+
+
+//
+// editUserProfile({required Map<String,dynamic> profile}){
+//
+//   userProfile["userProfile"]["userId"]=profile["userId"];
+//   userProfile["userProfile"]["fullNameArabic"]=profile["fullNameArabic"];
+//   userProfile["userProfile"]["fullNameEnglish"]=profile["fullNameEnglish"];
+//   userProfile["userProfile"]["email"]=profile["email"];
+//   userProfile["userProfile"]["phoneNumber"]=profile["phoneNumber"];
+//   userProfile["userProfile"]["dateOfBirth"]=profile["dateOfBirth"];
+//   userProfile["userProfile"]["profilePicture"]=profile["profilePicture"];
+//
+//   userProfile["userProfile"]["address"]["province"]=profile["address"]["province"];
+//   userProfile["userProfile"]["address"]["directorate"]=profile["address"]["directorate"];
+//   userProfile["userProfile"]["address"]["city"]=profile["address"]["city"];
+//   userProfile["userProfile"]["address"]["street"]=profile["address"]["street"];
+//
+//   userProfile["userProfile"]["AcademicQualification"]["degree"]=profile["AcademicQualification"]["degree"];
+//   userProfile["userProfile"]["AcademicQualification"]["university"]=profile["AcademicQualification"]["university"];
+//   userProfile["userProfile"]["AcademicQualification"]["startDate"]=profile["AcademicQualification"]["startDate"];
+//   userProfile["userProfile"]["AcademicQualification"]["endDate"]=profile["AcademicQualification"]["endDate"];
+// }
 
 //
 // gitUserProfile()=>userProfile;
@@ -31,25 +64,3 @@ massageForm=MassageForm();
 // massageForm?.data=userProfile["userProfile"];
 //
 // }
-
-  editUserProfile({required Map<String,dynamic> profile}){
-
-    userProfile["userProfile"]["userId"]=profile["userId"];
-    userProfile["userProfile"]["fullNameArabic"]=profile["fullNameArabic"];
-    userProfile["userProfile"]["fullNameEnglish"]=profile["fullNameEnglish"];
-    userProfile["userProfile"]["email"]=profile["email"];
-    userProfile["userProfile"]["phoneNumber"]=profile["phoneNumber"];
-    userProfile["userProfile"]["dateOfBirth"]=profile["dateOfBirth"];
-    userProfile["userProfile"]["profilePicture"]=profile["profilePicture"];
-
-    userProfile["userProfile"]["address"]["province"]=profile["address"]["province"];
-    userProfile["userProfile"]["address"]["directorate"]=profile["address"]["directorate"];
-    userProfile["userProfile"]["address"]["city"]=profile["address"]["city"];
-    userProfile["userProfile"]["address"]["street"]=profile["address"]["street"];
-
-    userProfile["userProfile"]["AcademicQualification"]["degree"]=profile["AcademicQualification"]["degree"];
-    userProfile["userProfile"]["AcademicQualification"]["university"]=profile["AcademicQualification"]["university"];
-    userProfile["userProfile"]["AcademicQualification"]["startDate"]=profile["AcademicQualification"]["startDate"];
-    userProfile["userProfile"]["AcademicQualification"]["endDate"]=profile["AcademicQualification"]["endDate"];
-     }
-}

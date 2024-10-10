@@ -22,10 +22,10 @@ class RouteManager{
         return MaterialPageRoute(builder: (ctx)=>CorseDetalsSreen(c: cours,));
       }
       case '/edtprofile':return MaterialPageRoute(builder: (ctx)=>EdtProfileScreen());
-      case '/cours':return MaterialPageRoute(builder: (ctx)=>CorsScreen());
+      case '/course':return MaterialPageRoute(builder: (ctx)=>CorsScreen());
       case '/login':return MaterialPageRoute(builder: (ctx)=>LoginScreen());
       case '/signup':return MaterialPageRoute(builder: (ctx)=>SignupScreen());
-       // case '/testVM':return MaterialPageRoute(builder: (ctx)=>Testvm());
+       case '/testVM':return MaterialPageRoute(builder: (ctx)=>Testvm());
       case '/default':return MaterialPageRoute(builder: (ctx)=>SplashScreen());
 
         

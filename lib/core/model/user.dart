@@ -1,35 +1,64 @@
+import 'package:an_najah_project/core/model/academic_qualification.dart';
+
 class User {
-  String? fullName;
+  String? arabicName;
+  String? englishName;
   String? email;
   String? password;
   String? phoneNumber;
   String? address;
+  int? userId;
+
+  String? dateOfBirth;
+  String? profilePicture;
+  AcademicQualification? academicQualification;
 
   User(
-      {this.fullName,
-      this.email,
-      this.password,
-      this.phoneNumber,
-      this.address});
+      {this.userId,
+        this.englishName,
+        this.arabicName,
+        this.email,
+        this.phoneNumber,
+        this.dateOfBirth,
+        this.profilePicture,
+        this.address,
+        this.academicQualification});
 
   User.fromJson(Map<String, dynamic> json) {
-    fullName = json['fullName'];
+    userId = json['userId'];
+    arabicName = json['arabicName'];
+    englishName=json['englishName'];
     email = json['email'];
-    password = json['password'];
     phoneNumber = json['phoneNumber'];
-    address =
-        json['address'] != null ?  json['address']  : null;
+    dateOfBirth = json['dateOfBirth'];
+    profilePicture = json['profilePicture'];
+    this.address =
+    json['address'] != null ?  json['address']  : null;
+    if (json['academicQualification'] != null) {
+
+      academicQualification=new AcademicQualification.fromJson(json['academicQualification']);
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['fullName'] = this.fullName;
+    data['userId'] = this.userId;
+    data['arabicName'] = this.arabicName;
+    data['englishName'] = this.englishName;
     data['email'] = this.email;
-    data['password'] = this.password;
     data['phoneNumber'] = this.phoneNumber;
+    data['dateOfBirth'] = this.dateOfBirth;
+    data['profilePicture'] = this.profilePicture;
     if (this.address != null) {
-      data['address'] = this.address!;
+      data['address'] = this.address! ;
+    }
+    if (this.academicQualification != null) {
+      data['academicQualification'] =
+          this.academicQualification!.toJson();
     }
     return data;
   }
+
 }
+
+

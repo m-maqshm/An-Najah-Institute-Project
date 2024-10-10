@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../helpers/http_helper.dart';
-import '../constants/http_urls.dart';
+import '../constant/http_urls.dart';
 import '../models/cors.dart';
 
 class Corsvm {
@@ -10,7 +10,7 @@ class Corsvm {
       HttpHelper http=HttpHelper.instance;
 
 
-      Response res=await http.getRequest(url: HttpUrls.cours );
+      Response res=await http.getRequest(url: HttpUrls.allcorses );
       List<Cours>? allCourse = res.data?.map<Cours>((e)=>Cours.fromJson(e)).toList();
 
 

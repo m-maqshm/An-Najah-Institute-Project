@@ -97,7 +97,7 @@ class SignupScreen extends StatelessWidget {
                           hint: "من فضلك ادخل اسمك رباعياُ",
                           lable: "الاسم الكامل",
                           keyboardType: TextInputType.text,
-                          validateInput: (value) {
+                          validateInput: isValdite? (value) {
                             // التحقق من الاسم الرباعي
                             if (value!.isEmpty) {
                               return 'يرجى ملئ هذا الحقل';
@@ -105,7 +105,7 @@ class SignupScreen extends StatelessWidget {
                               return 'يرجى إدخال اسم رباعي';
                             }
                             return null;
-                          },
+                          }:null,
                         ),
                         TextFormScreen(
                           controller: phoneController,
@@ -214,7 +214,7 @@ class SignupScreen extends StatelessWidget {
                         BottonScreen(
                           text: "تسجيل",
                           methd: () async {
-                            if (_frmKey.currentState!.validate() == true||!isValdite) {
+                            if (_frmKey.currentState!.validate() == true) {
                               Object? result = await userVM.signup(
                                   fullName: fullnameController.text,
                                   email: emailController.text,

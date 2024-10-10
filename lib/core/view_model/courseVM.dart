@@ -1,31 +1,31 @@
  import 'package:an_najah_project/core/data/alnjahAPI.dart';
 import 'package:an_najah_project/core/model/course.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 
-class Coursevm {
-  List <Course> allcourses=[],computerCourses=[],englishCourses=[];
+import '../../helpers/http_helper.dart';
+import '../constant/http_urls.dart';
+import '../models/cors.dart';
+ class Coursesvm with ChangeNotifier {
+   Coursesvm() {
+     getCourses();
+   }
+   HttpHelper http=HttpHelper.instance;
 
-loadAllCoursesInThisDibloma(int id)
-{
-  switch(id){
-    case 1://المعرف الخاص بدبلوم الحاسوب
-      computerCourses=Alnjahapi.coputerCorsess["courses"]!.map((x)=>Course.fromJson(x)).toList();
-      break;
-    case 2://المعرف الخاص بدبلوم الانجليزي
-      computerCourses=Alnjahapi.englishCorsess["courses"]!.map((x)=>Course.fromJson(x)).toList();
-      break;
-    case 3://المعرف الخاص بدبلوم التدريب المهني
-      computerCourses=Alnjahapi.corsess["courses"]!.map((x)=>Course.fromJson(x)).toList();
-      break;
-}}
-  getSpecificCourseInformation({required String  courseName}){
-  return allcourses.firstWhere((item) => item.courseName == courseName, /* orElse: () => null*/);
+   List<Cours> courses = [] ;
+   void getCourses ( )  async{
+     print("kll");
+     try{
+       Dio d=Dio();
+     Response res=await d.get( HttpUrls.cours );
 
-}
+     courses = res.data['data'].map<Cours>((e)=>Cours.fromJson(e)).toList();}
 
-loadAllCoursesForSpecificDiploma({String })async{
+     catch(x){
+     print(" x =$x");
+   }
+     notifyListeners();
 
-  allcourses=await Alnjahapi.corsess["courses"]!.map((c)=>Course.fromJson(c)).toList();
-
-}
+   }
 
  }
