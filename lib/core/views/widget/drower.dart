@@ -80,12 +80,7 @@ class CustomDrawer extends StatelessWidget {
             title: Icon(Icons.group),
             onTap: () {},
           ),
-
-
-
-
-
-        ],
+ ],
       ),
     );
   }
