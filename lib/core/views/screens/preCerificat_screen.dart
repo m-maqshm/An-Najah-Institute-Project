@@ -64,7 +64,7 @@ class PreCertificates extends StatelessWidget {
               ],
             ),
           ]),
-      // drawer: CustomDrawer(onLogin: () {}, onLogout: () {}),
+      drawer: CustomDrawer(onLogin: () {}, onLogout: () {}),
       body: Column(
         children: [
           Container(
