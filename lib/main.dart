@@ -1,8 +1,11 @@
+import 'package:an_najah_project/core/view_models/cerificatvm.dart';
 import 'package:an_najah_project/helpers/route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+import 'package:provider/provider.dart';
 
 import 'core/theem/ligetheem.dart';
+import 'core/view_models/corsvm.dart';
 
 void main() {
   runApp( MyApp());
@@ -22,18 +25,26 @@ class MyApp extends StatelessWidget {
       ],
       initLanguageCode: 'ar',
     );
-    return SafeArea(
-      child: MaterialApp(
-        supportedLocales: localization.supportedLocales,
-        localizationsDelegates: localization.localizationsDelegates,
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: RouteManager.generateRoute,
-
-        initialRoute: '/cours',
-        title: 'Flutter Demo',
-        theme: aapligetThem,
-
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Coursesvm >(create: (context) => Coursesvm(),),
+        ChangeNotifierProvider<Cerificatvm >(create: (context) => Cerificatvm())
+      ],
+      child: SafeArea(
+        child: MaterialApp(
+          supportedLocales: localization.supportedLocales,
+          localizationsDelegates: localization.localizationsDelegates,
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: RouteManager.generateRoute,
+      
+          initialRoute: '/preCertificates',
+          title: 'Flutter Demo',
+          theme: aapligetThem,
+      
+        ),
       ),
     );
   }
 }
+
+

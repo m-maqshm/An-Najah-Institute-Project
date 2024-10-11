@@ -1,21 +1,21 @@
-// import 'package:dio/dio.dart';
-//
-// class ApiException{
-//   static handleException(DioException error){
-//     switch(error.type){
-//       case DioExceptionType.badResponse :{
-//         return "bad response check username or password";
-//       }
-//       case DioExceptionType.connectionTimeout :{
-//         return "server take long time to response";
-//       }
-//       case DioExceptionType.receiveTimeout :{
-//         return "didn't get any response from server";
-//       }
-//       default:{
-//         return "unknown error please check your internet connection and try later";
-//       }
-//
-//     }
-//   }
-// }
+import 'package:dio/dio.dart';
+
+class ApiException{
+  static handleException(DioException error){
+    switch(error.type){
+      case DioExceptionType.badResponse :{
+        return " استعلام خاطئ ${error.message}";
+      }
+      case DioExceptionType.connectionTimeout :{
+        return "يستغرق الخادم وقتًا طويلاً للاستجابة ${error.message}";
+      }
+      case DioExceptionType.receiveTimeout :{
+        return "لم يتم على أي رد من الخادم ${error.message}";
+      }
+      default:{
+        return "خطأ غير معروف، يرجى التحقق من اتصالك بالإنترنت والمحاولة لاحقاً";
+      }
+
+    }
+  }
+}

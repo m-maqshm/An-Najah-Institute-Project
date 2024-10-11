@@ -1,15 +1,18 @@
-import 'package:an_najah_project/core/view_models/corsvm.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/cors.dart';
+import '../../view_models/corsvm.dart';
 import '../widget/appbar_widget.dart';
 
 class CorsScreen extends StatelessWidget {
-   CorsScreen({super.key});
-Corsvm cvm = Corsvm();
-@override
+  CorsScreen({super.key});
+  Coursesvm cvm = Coursesvm();
+// Corsvm cvm = Corsvm();
+  @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
+    var consumer = Consumer;
     return SafeArea(
         child: SafeArea(
           child: Scaffold(
@@ -41,9 +44,9 @@ Corsvm cvm = Corsvm();
                   height: MediaQuery.of(context).size.height * 0.3,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/p1.jpg'),fit: BoxFit.fill
-                      ),
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/2.png'),fit: BoxFit.fill
+                    ),
                   ),
                 ),
                 Positioned(
@@ -54,11 +57,11 @@ Corsvm cvm = Corsvm();
                         height: MediaQuery.of(context).size.height * 0.14,
                         color: Color.fromARGB(63, 187, 173, 255),
                         child: Text('دبلوم الحاسب الالي ',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontFamily: 'cairo.ttf',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,),textAlign: TextAlign.right,))),
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'cairo.ttf',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,),textAlign: TextAlign.right,))),
                 Positioned(
                   top: 250,
                   left: 0,
@@ -79,49 +82,50 @@ Corsvm cvm = Corsvm();
                           margin: EdgeInsets.only(right: 20,top: 3,),
                           child: Text('الكورسات المتاحة',style: Theme.of(context).textTheme.titleLarge,textAlign:TextAlign.right,textDirection: TextDirection.rtl),),
                         Expanded(
-                          child: FutureBuilder(future: cvm.getCours(),
-                            builder: (context, snapshot) {
-                              return ListView.builder(
-                                itemCount: snapshot.data?.length,itemBuilder:(context, index) {
-                                  return InkWell(
-                                    onTap: (){
-                                      Navigator.pushNamed(context, '/corsdetals',arguments: snapshot.data?[index]);
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
-                                      padding: EdgeInsets.symmetric(horizontal: 10),
-                                      height: 110,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Color.fromARGB(39, 187, 173, 255)),
-                                        borderRadius: BorderRadius.circular(20),
-                                      color: Color.fromARGB(39, 187, 173, 255),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        textDirection: TextDirection.rtl,
-                                        children: [
-                                    
-                                       Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            textDirection: TextDirection.rtl,
-                                            children: [Container(padding: EdgeInsets.only(right: 10),child: Text('${snapshot.data?[index].courName}',style: Theme.of(context).textTheme.titleSmall)),
-                                              Text('${snapshot.data?[index].description}',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 3,textDirection: TextDirection.rtl,textAlign: TextAlign.right,style: Theme.of(context).textTheme.bodySmall,),
-                                            ],
-                                          ),
+                          child: Consumer<Coursesvm>(
+                              builder: (context,c , child) {
+                                return c.courses.isEmpty?Center(child: CircularProgressIndicator()):ListView.builder(
+                                  itemCount: c.courses.length,
+                                  itemBuilder:(context, index) {
+                                    return InkWell(
+                                      onTap: (){
+                                        Navigator.pushNamed(context, '/corsdetals',arguments: c.courses[index]);
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
+                                        padding: EdgeInsets.symmetric(horizontal: 10),
+                                        height: 110,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Color.fromARGB(39, 187, 173, 255)),
+                                          borderRadius: BorderRadius.circular(20),
+                                          color: Color.fromARGB(39, 187, 173, 255),
                                         ),
-                                        Container(width: 100,height: 80,decoration: BoxDecoration(
-                                                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                                    image: DecorationImage(
-                                      image: AssetImage('assets/images/p1.jpg',),fit: BoxFit.fill),
-                                                                   ))
-                                      ],),
-                                    ),
-                                  );
-                                } ,);
-                            }
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          textDirection: TextDirection.rtl,
+                                          children: [
+
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                textDirection: TextDirection.rtl,
+                                                children: [Container(padding: EdgeInsets.only(right: 10),child: Text('${ c.courses[index].courName}',style: Theme.of(context).textTheme.titleSmall)),
+                                                  Text('${ c.courses[index].description}',
+                                                    overflow: TextOverflow.ellipsis,
+                                                    maxLines: 3,textDirection: TextDirection.rtl,textAlign: TextAlign.right,style: Theme.of(context).textTheme.bodySmall,),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(width: 100,height: 80,decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                              image: DecorationImage(
+                                                  image: AssetImage("assets/images/2.png",),fit: BoxFit.fill),
+                                            ))
+                                          ],),
+                                      ),
+                                    );
+                                  } ,);
+                              }
                           ),
                         )
                       ],
