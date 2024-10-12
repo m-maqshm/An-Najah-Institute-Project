@@ -2,11 +2,15 @@ import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:an_najah_project/core/views/widget/botton_screen.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import '../../view_models/userVM.dart';
 
 class LoginScreen extends StatelessWidget {
   GlobalKey<FormState> frmKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  UserVM userVM=UserVM();
 
   LoginScreen({super.key});
 
@@ -105,10 +109,36 @@ class LoginScreen extends StatelessWidget {
                             keyboardType: TextInputType.visiblePassword),
                         BottonScreen(
                           text: 'دخول',
-                          methd: () {
-                            if (frmKey.currentState!.validate() == true) {}
-                            print('object');
-                          },
+                          methd: ()async {
+                            if (frmKey.currentState!.validate() == true) {
+
+                            }
+
+                           bool? result=  await userVM.login(email: emailController.text, password: passwordController.text);
+
+
+                            if(result!=null && result) {
+                              Fluttertoast.showToast(
+                                  msg: "لقد تم تسجيل دخولك في النظام بنجاح ",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 4,
+                                  backgroundColor: Colors.green,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0);
+                              Navigator.pushReplacementNamed(context, '/cours');
+                            }
+                            else
+                              {Fluttertoast.showToast(
+                                msg:
+                                "هناك خطاء لم تتم عملية تسجيل الدخول في النظام اعد المحاولة لاحقاَ",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 4,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          }}
                         ),
                         const SizedBox(
                           height: 15,
@@ -128,7 +158,7 @@ class LoginScreen extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 Navigator.pushNamedAndRemoveUntil(
-                                    context, "/sinup", (Route) => false);
+                                    context, "/signup", (Route) => false);
                               },
                               child: const Text(
                                 "سجل من هنا",

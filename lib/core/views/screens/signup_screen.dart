@@ -1,18 +1,21 @@
+import 'package:an_najah_project/core/view_models/userVM.dart';
 import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:an_najah_project/core/views/widget/botton_screen.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // ignore: must_be_immutable
 class SignupScreen extends StatelessWidget {
-  final TextEditingController fullnameController = TextEditingController();
+  final TextEditingController arabicNameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController locationController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   GlobalKey<FormState> _frmKey = GlobalKey();
+UserVM userVM=UserVM();
+  String gender = "m";
 
-  String gender = "male";
 
   SignupScreen({super.key});
 
@@ -89,7 +92,7 @@ class SignupScreen extends StatelessWidget {
                           ),
                         ),
                         TextFormScreen(
-                          controller: fullnameController,
+                          controller: arabicNameController,
                           hint: "من فضلك ادخل اسمك رباعياُ",
                           lable: "الاسم الكامل",
                           keyboardType: TextInputType.text,
@@ -116,7 +119,7 @@ class SignupScreen extends StatelessWidget {
                           },
                         ),
                         TextFormScreen(
-                          controller: locationController,
+                          controller: addressController,
                           hint:
                               "من فضلك ادخل عنوانك هنا مثل: حضرموت / القطن / الريضة ",
                           lable: "العنوان:",
@@ -178,14 +181,14 @@ class SignupScreen extends StatelessWidget {
                             ),
                             Text("ذكر"),
                             Radio(
-                                value: "male",
+                                value: "m",
                                 groupValue: gender,
                                 onChanged: (e) {
                                   gender = e!;
                                 }),
                             Text("انثى"),
                             Radio(
-                                value: "female",
+                                value: "f",
                                 groupValue: gender,
                                 onChanged: (e) {
                                   gender = e!;
@@ -194,8 +197,32 @@ class SignupScreen extends StatelessWidget {
                         ),
                         BottonScreen(
                           text: "تسجيل",
-                          methd: () {
-                            if (_frmKey.currentState!.validate() == true) {}
+                          methd: () async{
+                            if (_frmKey.currentState!.validate() == true) {
+                           bool?   result =await userVM.signup(arabicName : arabicNameController.text, email: emailController.text, password: passwordController.text, phoneNo: phoneController.text, address:addressController.text ,gender: gender);
+                           if(result!=null && result) {
+                             Fluttertoast.showToast(
+                                 msg: "لقد تم تسجيلك في النظام بنجاح ",
+                                 toastLength: Toast.LENGTH_SHORT,
+                                 gravity: ToastGravity.CENTER,
+                                 timeInSecForIosWeb: 4,
+                                 backgroundColor: Colors.green,
+                                 textColor: Colors.white,
+                                 fontSize: 16.0);
+                             Navigator.pushReplacementNamed(context, '/cours');
+                           }
+                           else
+                           {Fluttertoast.showToast(
+                               msg:
+                               "هناك خطاء لم تتم عمليةالتسجيل الدخول في النظام اعد المحاولة لاحقاَ",
+                               toastLength: Toast.LENGTH_SHORT,
+                               gravity: ToastGravity.CENTER,
+                               timeInSecForIosWeb: 4,
+                               backgroundColor: Colors.red,
+                               textColor: Colors.white,
+                               fontSize: 16.0);
+                           }
+                            }
                           },
                         ),
                         const SizedBox(

@@ -1,14 +1,17 @@
+import 'package:an_najah_project/core/view_models/profileVM.dart';
 import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
 import 'package:an_najah_project/core/views/widget/list_titel_widget.dart';
+import 'package:an_najah_project/helpers/storage_helper.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+ ProfileScreen({super.key});
+  StorageHelper storageHelper=StorageHelper.instance;
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-
+ProfileVM profileVM=ProfileVM();
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
@@ -51,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: const Text("loqmanbashreef@gmail.com" , style: TextStyle(color: Colors.white),),
+                child:storageHelper.readKey("email")!=null?Text(storageHelper.readKey("email").toString() , style: TextStyle(color: Colors.white)): const Text("examble@gmail.com" , style: TextStyle(color: Colors.white),),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
@@ -68,16 +71,16 @@ class ProfileScreen extends StatelessWidget {
                       height: height * 0.02,
                     ),
                     ListTitelWidget(
-                      property: "full name: ",
-                      value: "Loqman Saleh Bashreef",
+                      property: "arabic name: ",
+                      value: storageHelper.readKey("arabicName"),
                     ),
                     ListTitelWidget(
-                      property: "nationality: ",
-                      value: "yemeni",
+                      property: "address : ",
+                      value: storageHelper.readKey('address'),
                     ),
                     ListTitelWidget(
                       property: "phone No: ",
-                      value: "772966425",
+                      value: storageHelper.readKey('phoneNumber'),
                     )
                   ],
                 ),
@@ -96,23 +99,22 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       ListTitelWidget(
                         property: "Name : ",
-                        value: "Loqman Saleh Bashreef",
+                        value: storageHelper.readKey('englishName'),
                       ),
                       ListTitelWidget(
                         property: "ID Number : ",
-                        value: "088728389893",
+                        value: storageHelper.readKey('Id-card'),
                       ),
-                      ListTitelWidget(
-                        property: "The Governorate : ",
-                        value: "Hadramoute",
-                      ),
+                      // ListTitelWidget(
+                      //   property: "The Governorate : ",
+                      //   value: "Hadramoute",
+                      // ),
                       ListTitelWidget(
                         property: "Educational Qualification : ",
-                        value: "Bachelor`s",
-                      ),
+                        value: storageHelper.readKey('academicQualification')                      ),
                       ListTitelWidget(
                         property: "Day of Birth : ",
-                        value: "1/2/2000",
+                        value: storageHelper.readKey("dateOfBirth"),
                       ),
                       
                     ],

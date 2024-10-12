@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteManager.generateRoute,
       
-          initialRoute: '/preCertificates',
+          initialRoute: '/edtprofile',
           title: 'Flutter Demo',
           theme: aapligetThem,
       
