@@ -15,7 +15,7 @@ class ListTitelWidget extends StatelessWidget {
 
 
     return Container(
-      height: height * 0.08,
+      height: height * 0.07,
       child: Column(
         children: [
           Row(

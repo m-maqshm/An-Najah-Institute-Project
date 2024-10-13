@@ -1,18 +1,68 @@
+import 'package:an_najah_project/core/constants/color.dart';
 import 'package:an_najah_project/core/views/widget/ContenDetals.dart';
 import 'package:an_najah_project/core/views/widget/botton_screen.dart';
+import 'package:an_najah_project/core/views/widget/drower.dart';
+import 'package:an_najah_project/core/views/widget/notificationdialog.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/cors.dart';
 import '../../view_models/corsvm.dart';
-import '../widget/sllder.dart';
 
+// ignore: must_be_immutable
 class CorseDetalsSreen extends StatelessWidget {
   Cours c;
   Coursesvm cvm = Coursesvm();
+  final List<String> notifications = ['الإشعار 1', 'الإشعار 2', 'الإشعار 3'];
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   CorseDetalsSreen({super.key, required this.c});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+            appBar: AppBar(
+          backgroundColor:  AppColors.appbarColor,
+          actions: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  child: IconButton(
+                    icon: Icon(Icons.notifications,
+                        color: Colors.white, size: 25),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return NotificationDialog(
+                              notifications: notifications);
+                        },
+                      );
+                    },
+                  ),
+                ),
+                Positioned(
+                  right: 10,
+                  top: 4,
+                  child: Container(
+                    padding: EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Text(
+                      '3',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ]),
+          drawer: CustomDrawer(onLogin: () {}, onLogout: () {}),
       body: SingleChildScrollView(
         child: SingleChildScrollView(
           child: Container(
@@ -24,7 +74,7 @@ class CorseDetalsSreen extends StatelessWidget {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.44,
+                        height: MediaQuery.of(context).size.height * 0.37,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.all(Radius.circular(30)),
                             image: DecorationImage(
@@ -46,17 +96,20 @@ class CorseDetalsSreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('${c.courName}',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 26),textDirection: TextDirection.rtl,textAlign: TextAlign.right,),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 20),
+                                    child: Text('${c.courName}',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),textDirection: TextDirection.rtl,textAlign: TextAlign.right,),
+                                  ),
                                   Text('${c.description}',
                                     overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,textDirection: TextDirection.rtl,textAlign: TextAlign.right,style: TextStyle(
+                                    maxLines: 3,textDirection: TextDirection.rtl,textAlign: TextAlign.right,style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 18),)
+                                        fontSize: 14),)
                                 ],
                               ))),
 
@@ -89,7 +142,7 @@ class CorseDetalsSreen extends StatelessWidget {
                       SizedBox(height: 10,),
                       BottonScreen(
                         text: 'سجل الآن',
-                        methd: () {
+                        method: () {
                           cvm.regsterationCours(token: 'token', course_id: c.courId.toString())?.then((x) {
                             // if(x=='success')
                             //   return showDialog(context: context, builder: (ctx)=>AlertDialog(content: Text("تم تسجيلك في كورس ${c.courName} بنجاح"),));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomCard extends StatelessWidget {
   String? title;
   String? imageUrl;
@@ -9,17 +10,17 @@ class CustomCard extends StatelessWidget {
 
   CustomCard(
       {required this.title,
-        required this.imageUrl,
-        required this.state,
-        required this.date,
-        required this.certificatesNum});
+      required this.imageUrl,
+      required this.state,
+      required this.date,
+      required this.certificatesNum});
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Card(
-      color: const Color.fromARGB(255, 226, 222, 209),
+      color: const Color.fromARGB(132, 236, 99, 8),
       margin: EdgeInsets.all(10),
       elevation: 5,
       child: Padding(
@@ -95,4 +96,3 @@ class CustomCard extends StatelessWidget {
     );
   }
 }
-

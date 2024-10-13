@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NotificationDialog extends StatelessWidget {
-  final List<String> notifications;
+  final List<String> notifications; 
 
   const NotificationDialog({
     Key? key,
@@ -13,7 +13,7 @@ class NotificationDialog extends StatelessWidget {
     return AlertDialog(
       title: Text("الإشعــــارات", style: TextStyle(fontSize: 20)),
       content: SizedBox(
-        width: double.maxFinite,
+        width: double.maxFinite, 
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: notifications.length,
@@ -31,7 +31,7 @@ class NotificationDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(); 
           },
           child: Text("موافق"),
         ),
@@ -39,4 +39,3 @@ class NotificationDialog extends StatelessWidget {
     );
   }
 }
-

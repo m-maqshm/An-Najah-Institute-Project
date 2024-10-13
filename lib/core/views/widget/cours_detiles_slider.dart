@@ -1,14 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class ShowAds extends StatelessWidget {
-  const ShowAds({super.key});
+class CoursDetilesSlider extends StatelessWidget {
+   CoursDetilesSlider({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: MediaQuery.of(context).size.height * 1 / 4,
+        height: MediaQuery.of(context).size.height * 0.1,
         autoPlay: true,
         enlargeCenterPage: true,
         // Enable pagination indicator
@@ -22,15 +22,17 @@ class ShowAds extends StatelessWidget {
         "assets/images/career.jpg",
         "assets/images/computer.png",
         "assets/images/english.jpg"
-      ].map((item) => Container(
-        clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Center(
-          child: Image.asset(item, fit: BoxFit.cover, width: 1000),
-        ),
-      )).toList(),
+      ]
+          .map((item) => Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Center(
+                  child: Image.asset(item, fit: BoxFit.cover, width: 1000),
+                ),
+              ))
+          .toList(),
     );
   }
 }

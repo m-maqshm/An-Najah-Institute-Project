@@ -1,4 +1,4 @@
-
+import 'package:an_najah_project/core/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -13,7 +13,7 @@ class CustomDrawer extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return Drawer(
-      backgroundColor: const Color.fromARGB(255, 158, 189, 214),
+      backgroundColor: AppColors.mainColor,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -57,12 +57,12 @@ class CustomDrawer extends StatelessWidget {
             title: Icon(Icons.login),
             onTap: () {Navigator.pushNamed(context, "/login");},
           ),
-          ListTile(
+           ListTile(
             leading: Text('تسجيل الخروج  '),
             title: Icon(Icons.logout),
             onTap: () {},
           ),
-          ListTile(
+           ListTile(
             leading: Text('الملف الشخصي'),
             title: Icon(Icons.person_3_outlined),
             onTap: () {},
@@ -80,10 +80,13 @@ class CustomDrawer extends StatelessWidget {
             title: Icon(Icons.group),
             onTap: () {},
           ),
- ],
+         
+
+
+
+         
+        ],
       ),
     );
   }
 }
-
-

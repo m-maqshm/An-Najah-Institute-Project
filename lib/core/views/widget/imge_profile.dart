@@ -10,15 +10,16 @@ class imgeProfile extends StatefulWidget {
 }
 
 class _imgeProfileState extends State<imgeProfile> {
-  @override
   String? path;
 
   Widget build(BuildContext context) {
+      double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap:(){
         showDialog(context: context, builder: (ctx){
           return AlertDialog(content:SizedBox(
-            width: 300,
+            width: width*0.06,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -42,15 +43,17 @@ class _imgeProfileState extends State<imgeProfile> {
         });
       },
       child: Container(
-        width: 200,
-        height: 200,
+        width: width*0.5,
+        height: height*0.2,
         decoration: BoxDecoration(
+          shape: BoxShape.circle,
             border: Border.all(color: Colors.blueAccent),
             image: DecorationImage(
+              
 
                 image:path==null? AssetImage("assets/images/user_icon.png",):FileImage(File(path!),),
-                fit: BoxFit.fill),
-            borderRadius: BorderRadius.circular(50),
+                fit: BoxFit.cover),
+           
             color: Colors.white),
       ),
     );

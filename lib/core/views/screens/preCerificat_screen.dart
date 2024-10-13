@@ -1,3 +1,4 @@
+import 'package:an_najah_project/core/constants/color.dart';
 import 'package:an_najah_project/core/views/widget/customcard.dart';
 import 'package:an_najah_project/core/views/widget/drower.dart';
 import 'package:an_najah_project/core/views/widget/notificationdialog.dart';
@@ -13,16 +14,17 @@ class PreCertificates extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> notifications = ['الإشعار 1', 'الإشعار 2', 'الإشعار 3'];
+    
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     // الحصول على ارتفاع وعرض الشاشة
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 223, 134, 102),
+          backgroundColor: AppColors.appbarColor,
           actions: [
             Stack(
               alignment: Alignment.center,
@@ -68,10 +70,11 @@ class PreCertificates extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: height * 0.04, // يمكنك تعديل هذا إذا لزم الأمر
+            height: height * 0.04, 
+            width: width*0.7,// يمكنك تعديل هذا إذا لزم الأمر
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(40)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20 ) , bottomRight: Radius.circular(30)),
               color: const Color.fromARGB(255, 149, 154, 216),
             ),
             child: Center(

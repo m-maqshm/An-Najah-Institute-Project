@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class Diplomas extends StatelessWidget {
-  Diplomas({super.key, this.diplom , this.pathImage});
+  Diplomas({super.key, this.diplom, this.pathImage , this.onTap});
   String? diplom;
-  String? pathImage ;
+  String? pathImage;
+  Function? onTap ;
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +13,19 @@ class Diplomas extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Container(
-          height: screenHeight * 0.2,
-          width: screenWidth * 0.40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(30)),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage("$pathImage"  )),
-            color: Colors.green,
+        InkWell(
+          onTap: () {
+            onTap!();
+          },
+          child: Container(
+            height: screenHeight * 0.2,
+            width: screenWidth * 0.40,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              image: DecorationImage(
+                  fit: BoxFit.cover, image: AssetImage("$pathImage")),
+              color: Colors.green,
+            ),
           ),
         ),
         SizedBox(
@@ -32,7 +37,11 @@ class Diplomas extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(30)),
               color: const Color.fromARGB(255, 206, 202, 231)),
-          child: Center(child: Text("$diplom" , style: TextStyle(fontSize: 12 , fontWeight: FontWeight.bold),)),
+          child: Center(
+              child: Text(
+            "$diplom",
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+          )),
         )
       ],
     );

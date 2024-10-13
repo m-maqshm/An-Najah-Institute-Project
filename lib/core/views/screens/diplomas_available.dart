@@ -1,11 +1,15 @@
 
-import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
+import 'package:an_najah_project/core/constants/color.dart';
 import 'package:an_najah_project/core/views/widget/diplomas.dart';
+import 'package:an_najah_project/core/views/widget/drower.dart';
+import 'package:an_najah_project/core/views/widget/notificationdialog.dart';
 import 'package:an_najah_project/core/views/widget/show_ads.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class DiplomasAvailable extends StatelessWidget {
+    final List<String> notifications = ['الإشعار 1', 'الإشعار 2', 'الإشعار 3'];
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   DiplomasAvailable({super.key});
 
   @override
@@ -14,7 +18,51 @@ class DiplomasAvailable extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppbarWidget(),
+      key: scaffoldKey,
+        appBar: AppBar(
+          backgroundColor: AppColors.appbarColor,
+          actions: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  child: IconButton(
+                    icon: Icon(Icons.notifications,
+                        color: Colors.white, size: 25),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return NotificationDialog(
+                              notifications: notifications);
+                        },
+                      );
+                    },
+                  ),
+                ),
+                Positioned(
+                  right: 10,
+                  top: 4,
+                  child: Container(
+                    padding: EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Text(
+                      '3',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ]),
+          drawer: CustomDrawer(onLogin: () {}, onLogout: () {}),
       backgroundColor: const Color.fromARGB(255, 129, 128, 182),
       body: SingleChildScrollView(
         child: Column(
