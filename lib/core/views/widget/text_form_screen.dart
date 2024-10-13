@@ -14,7 +14,7 @@ class TextFormScreen extends StatelessWidget {
     this.validateInput,
     this.label,
     this.backgroundColor,
-    this.keyboardType,
+    this.keyboardType, 
   });
 
   @override

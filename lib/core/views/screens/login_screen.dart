@@ -3,10 +3,13 @@ import 'package:an_najah_project/core/views/widget/botton_screen.dart';
 import 'package:an_najah_project/core/views/widget/show_ads.dart';
 import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
 
+
 class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> frmKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -87,26 +90,31 @@ class LoginScreen extends StatelessWidget {
                           },
                           hint: "ادخل بريدك الالكتروني هنا مثل: ali@gmail.com",
                           label: "البريد الالكتروني:",
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.emailAddress, 
                         ),
                         const SizedBox(height: 20),
                         TextFormScreen(
-                          controller: passwordController,
-                          validateInput: (x) => x != null && x.isNotEmpty ? null : "من فضلك اكتب كلمة السر",
-                          hint: "من فضلك اكتب كلمة السر هنا",
-                          label: "كلمة المرور:",
-                          keyboardType: TextInputType.visiblePassword,
-                        ),
-                        const SizedBox(height: 40),
+                            validateInput: (x) => x != null && x.isNotEmpty
+                                ? null
+                                : "من فضلك اكتب كلمة السر",
+                            controller: passwordController,
+                            hint: "من فضلك اكتب كلمة السر هنا ",
+                            label: "كلمة المرور:",
+                            keyboardType: TextInputType.visiblePassword,),
+                            SizedBox(
+                              height: height*0.05,
+                            ),
                         Center(
                           child: BottonScreen(
                             text: 'دخول',
                             method: () {
-                              if (frmKey.currentState!.validate()) {
-                                Navigator.pushReplacementNamed(context, "");
-                              }
+                              if (frmKey.currentState!.validate() == true) {}
+                              print('object');
                             },
                           ),
+                        ),
+                        const SizedBox(
+                          height: 15,
                         ),
                         const SizedBox(height: 20),
                         Row(
@@ -119,7 +127,8 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(width: 10),
                             InkWell(
                               onTap: () {
-                                Navigator.popAndPushNamed(context, "/signup");
+                                Navigator.pushNamed(
+                                    context, "/signup", );
                               },
                               child: const Text(
                                 "سجل من هنا",

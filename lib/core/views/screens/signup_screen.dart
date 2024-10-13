@@ -10,9 +10,11 @@ class SignupScreen extends StatelessWidget {
 
   final TextEditingController fullnameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController locationController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+   final TextEditingController locationController = TextEditingController();
+  
 
   final bool isValdite = true;
   final GlobalKey<FormState> _frmKey = GlobalKey();
@@ -96,7 +98,7 @@ class SignupScreen extends StatelessWidget {
                                   return 'يرجى إدخال اسم رباعي';
                                 }
                                 return null;
-                              },
+                              }, 
                             ),
                             TextFormScreen(
                               controller: phoneController,
@@ -129,7 +131,7 @@ class SignupScreen extends StatelessWidget {
                                       }
                                       return null;
                                     }
-                                  : null,
+                                  : null, 
                             ),
                             TextFormScreen(
                               controller: emailController,
@@ -143,7 +145,7 @@ class SignupScreen extends StatelessWidget {
                                   return 'ادخل بريد الكتروني صحيح';
                                 }
                                 return null;
-                              },
+                              }, 
                             ),
                             TextFormScreen(
                               controller: passwordController,
