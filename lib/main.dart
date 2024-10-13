@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
     localization.init(
       mapLocales: [
          const MapLocale('ar',{}),
-
       ],
       initLanguageCode: 'ar',
     );
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteManager.generateRoute,
       
-          initialRoute: '/preCertificates',
+          initialRoute: '/cours',
           title: 'Flutter Demo',
           theme: aapligetThem,
       
