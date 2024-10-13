@@ -9,20 +9,19 @@ import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CorsScreen extends StatelessWidget {
-  final List<String> notifications = ['الإشعار 1', 'الإشعار 2', 'الإشعار 3'];
    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   CorsScreen({super.key});
   Coursesvm cvm = Coursesvm();
-// Corsvm cvm = Corsvm();
+    final List<String> notifications = ['الإشعار 1', 'الإشعار 2', 'الإشعار 3'];
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
-    var consumer = Consumer;
+    // var consumer = Consumer;
     return SafeArea(
         child: SafeArea(
           child: Scaffold(
             key: scaffoldKey,
-             appBar: AppBar(
+appBar: AppBar(
           backgroundColor: AppColors.appbarColor,
           actions: [
             Stack(

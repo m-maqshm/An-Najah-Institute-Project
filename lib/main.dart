@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: localization.localizationsDelegates,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteManager.generateRoute,
-          initialRoute: '/devlopers',
+          initialRoute: '/courses',
           title: 'Flutter Demo',
           theme: aapligetThem,
         ),
