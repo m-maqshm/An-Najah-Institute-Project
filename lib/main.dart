@@ -1,4 +1,6 @@
 import 'package:an_najah_project/core/view_models/cerificatvm.dart';
+import 'package:an_najah_project/core/view_models/profileVM.dart';
+import 'package:an_najah_project/core/view_models/userVM.dart';
 import 'package:an_najah_project/helpers/route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
@@ -27,7 +29,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Coursesvm >(create: (context) => Coursesvm(),),
-        ChangeNotifierProvider<Cerificatvm >(create: (context) => Cerificatvm())
+        ChangeNotifierProvider<Cerificatvm >(create: (context) => Cerificatvm()),
+        ChangeNotifierProvider<UserVM >(create: (context) => UserVM())
       ],
       child: SafeArea(
         child: MaterialApp(
@@ -35,8 +38,8 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: localization.localizationsDelegates,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteManager.generateRoute,
-      
-          initialRoute: '/cours',
+          initialRoute: '/splash',
+
           title: 'Flutter Demo',
           theme: aapligetThem,
       

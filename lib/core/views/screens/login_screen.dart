@@ -1,27 +1,29 @@
-import 'package:an_najah_project/core/views/widget/appbar_widget.dart';
-import 'package:an_najah_project/core/views/widget/botton_screen.dart';
-import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
+import 'package:an_najah_project/core/view_models/userVM.dart';
 import 'package:flutter/material.dart';
+import 'package:an_najah_project/core/views/widget/botton_screen.dart';
+import 'package:an_najah_project/core/views/widget/show_ads.dart';
+import 'package:an_najah_project/core/views/widget/text_form_screen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 class LoginScreen extends StatelessWidget {
-  GlobalKey<FormState> frmKey = GlobalKey();
+  final GlobalKey<FormState> frmKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+UserVM userVM =UserVM();
   LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
+    final double height = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
-            // الحاوية الزرقاء تأخذ ارتفاع الشاشة بالكامل
             Container(
               color: const Color.fromARGB(255, 129, 128, 182),
-              height: screenHeight, // استخدام ارتفاع الشاشة الكامل
+              height: height,
               alignment: Alignment.topCenter,
             ),
             Positioned(
@@ -43,101 +45,113 @@ class LoginScreen extends StatelessWidget {
               top: 10,
               left: 20,
               right: 20,
-              child: Container(
+              child: SizedBox(
                 height: 200,
-                width: 20,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/alnajah.png"),
-                      fit: BoxFit.cover),
-                ),
+                child: ShowAds(),
               ),
             ),
-
             Positioned(
               top: 200,
               left: 0,
               right: 0,
               bottom: 0,
               child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white, // اللون الأبيض للحاوية
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   ),
                 ),
                 child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
                   child: Form(
                     key: frmKey,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: const Text("تسجيل الدخول",
-                              style: TextStyle(
-                                  fontSize: 50, fontFamily: "shorog")),
+                        Center(
+                          child: const Text(
+                            "تسجيــــل الدخـــول",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "shorog",
+                            ),
+                          ),
                         ),
-
+                        const SizedBox(height: 20),
                         TextFormScreen(
-                            controller: emailController,
-                            validateInput: (value) {
-                              if (value!.isEmpty ||
-                                  !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                      .hasMatch(value!)) {
-                                return 'من فضلك ادخل بريدك الكتروني ';
-                              }
-                              return null;
-
-                            },
-                            hint:
-                                "ادخل بريدك الالكتروني هنا مثل:ali.gmail.com ",
-                            lable: "البريد الالكتروني:",
-                            keyboardType: TextInputType.emailAddress),
-                        TextFormScreen(
-                            validateInput: (x) => x != null && x.isNotEmpty
-                                ? null
-                                : "من فضلك اكتب كلمة السر",
-                            controller: passwordController,
-                            hint: "من فضلك اكتب كلمة السر هنا ",
-                            lable: "كلمة المرور:",
-                            keyboardType: TextInputType.visiblePassword),
-                        BottonScreen(
-                          text: 'دخول',
-                          methd: () {
-                            if (frmKey.currentState!.validate() == true) {}
-                            print('object');
+                          controller: emailController,
+                          validateInput: (value) {
+                            if (value!.isEmpty ||
+                                !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").hasMatch(value)) {
+                              return 'من فضلك ادخل بريدك الكتروني';
+                            }
+                            return null;
                           },
+                          hint: "ادخل بريدك الالكتروني هنا مثل: ali@gmail.com",
+                          label: "البريد الالكتروني:",
+                          keyboardType: TextInputType.emailAddress,
+                        ),
+                        const SizedBox(height: 20),
+                        TextFormScreen(
+                          validateInput: (x) => x != null && x.isNotEmpty
+                              ? null
+                              : "من فضلك اكتب كلمة السر",
+                          controller: passwordController,
+                          hint: "من فضلك اكتب كلمة السر هنا ",
+                          label: "كلمة المرور:",
+                          keyboardType: TextInputType.visiblePassword,),
+                        SizedBox(
+                          height: height*0.05,
+                        ),
+                        Center(
+                          child: BottonScreen(
+                            text: 'دخول',
+                            method: () async{
+                              if (frmKey.currentState!.validate() == true) {
+bool? result=  await userVM.login(email: emailController.text, password: passwordController.text);
+
+
+if(result!=null && result) {
+Fluttertoast.showToast(
+msg: "لقد تم تسجيل دخولك في النظام بنجاح ",
+toastLength: Toast.LENGTH_SHORT,
+gravity: ToastGravity.CENTER,
+timeInSecForIosWeb: 4,
+backgroundColor: Colors.green,
+textColor: Colors.white,
+fontSize: 16.0);
+Navigator.pushReplacementNamed(context, '/diplom');
+}
+}
+                            },
+                          ),
                         ),
                         const SizedBox(
                           height: 15,
                         ),
+                        const SizedBox(height: 20),
                         Row(
-                          textDirection: TextDirection.rtl,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              "لا تملك حساب..",
-                              style: TextStyle(
-                                  fontFamily: "cairo.ttf", fontSize: 18),
-                              textAlign: TextAlign.right,
-                              textDirection: TextDirection.rtl,
+                              "لا تملك حساب...",
+                              style: TextStyle(fontSize: 15),
                             ),
-                            const SizedBox(width: 20),
+                            const SizedBox(width: 10),
                             InkWell(
                               onTap: () {
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, "/sinup", (Route) => false);
+                                Navigator.pushNamed(
+                                  context, "/signup", );
                               },
                               child: const Text(
                                 "سجل من هنا",
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 95, 8, 236),
-                                    fontFamily: "cairo.ttf",
-                                    fontSize: 21),
-                                textAlign: TextAlign.right,
-                                textDirection: TextDirection.rtl,
+                                  color: Color.fromARGB(255, 95, 8, 236),
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ],
@@ -154,3 +168,4 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
