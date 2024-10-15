@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="an_najah_project"
+        android:label="معهد النجاح"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

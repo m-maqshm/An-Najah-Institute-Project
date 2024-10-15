@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
   home(){
     Future.delayed(Duration(seconds: 3),(){
 
-      Navigator.pushNamedAndRemoveUntil(context, "/home",(route)=>false);
+      Navigator.pushNamedAndRemoveUntil(context, "/diplom",(route)=>false);
     });
   }
 

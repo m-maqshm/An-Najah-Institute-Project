@@ -36,6 +36,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_onboarding_slider: ^1.0.11
+  flutter_localization: ^0.2.2
+  image_picker: ^1.0.7
+  bottom_picker: ^2.8.0
+  carousel_slider: ^5.0.0
+  dio: ^5.7.0
+  provider: ^6.1.2
+  get_storage: ^2.1.1
+  fluttertoast: ^8.2.8
+
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +88,18 @@ flutter:
     - family: mainFont
       fonts:
         - asset: assets/fonts/JustMeAgainDownHere.ttf
+
+    - family: shahdFont
+      fonts:
+        - asset: assets/fonts/Shahd-Font-Regular.ttf
+
+    - family: cairo.ttf
+      fonts:
+        - asset: assets/fonts/Cairo-Bold.ttf
+
+    - family: shorog
+      fonts:
+        - asset: assets/fonts/Shoroq-Font.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
