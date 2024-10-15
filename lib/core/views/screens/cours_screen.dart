@@ -104,7 +104,7 @@ class CorsScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.14,
                         color: Color.fromARGB(63, 187, 173, 255),
-                        child: Text('دبلوم الحاسب الالي ',
+                        child: Text(' ',
                           style: TextStyle(
                             color: Color.fromARGB(255, 255, 255, 255),
                             fontFamily: 'cairo.ttf',

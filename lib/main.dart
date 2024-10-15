@@ -2,6 +2,7 @@ import 'package:an_najah_project/core/view_models/cerificatvm.dart';
 import 'package:an_najah_project/core/view_models/profileVM.dart';
 import 'package:an_najah_project/core/view_models/userVM.dart';
 import 'package:an_najah_project/helpers/route_manager.dart';
+import 'package:an_najah_project/helpers/storage_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<Coursesvm >(create: (context) => Coursesvm(),),
         ChangeNotifierProvider<Cerificatvm >(create: (context) => Cerificatvm()),
-        ChangeNotifierProvider<UserVM >(create: (context) => UserVM())
+        ChangeNotifierProvider<UserVM >(create: (context) => UserVM()),
+        ChangeNotifierProvider<StorageHelper >(create: (context) => StorageHelper())
       ],
       child: SafeArea(
         child: MaterialApp(

@@ -19,10 +19,9 @@ class ContenrDetalsapp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
       
-            Text('$title  : ',style: Theme.of(context).textTheme.titleMedium /*TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Color.fromRGBO(
-            30, 42, 72, 1.0))*/,textAlign: TextAlign.right,textDirection: TextDirection.rtl,),
-            Text(text=='null'?"لم يتم التحديد بعد":'${text }',style: Theme.of(context).textTheme.titleMedium /*TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Color.fromRGBO(
-            30, 42, 72, 1.0))*/,textAlign: TextAlign.right,textDirection: TextDirection.rtl,                                                    overflow: TextOverflow.ellipsis,
+            Text('$title :',style:  TextStyle(fontFamily: "cairo.ttf",fontSize: 16,fontWeight: FontWeight.normal, color:  Color.fromRGBO(77, 77, 77, 1.0)),textAlign: TextAlign.right,textDirection: TextDirection.rtl,),
+            Text(text=='null'?"لم يتم التحديد بعد":'${text }',style: TextStyle(fontFamily: "cairo.ttf",fontSize: 16,fontWeight: FontWeight.normal, color:  Color.fromRGBO(77, 77, 77, 1.0)), /*TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Color.fromRGBO(
+            30, 42, 72, 1.0))*/textAlign: TextAlign.right,textDirection: TextDirection.rtl,                                                    overflow: TextOverflow.ellipsis,
                 ),
             // Text('$title: $text $text',
             //   overflow: TextOverflow.ellipsis,

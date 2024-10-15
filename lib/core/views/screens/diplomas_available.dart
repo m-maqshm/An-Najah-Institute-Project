@@ -89,7 +89,7 @@ class DiplomasAvailable extends StatelessWidget {
                     alignment:
                     Alignment.centerRight,
                     child: Text(
-                      ":الدبلومات المتاحة",
+                      "الدبلومات المتاحة:",
                       style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold  , decoration: TextDecoration.underline ),
                       textAlign: TextAlign.right,
                     ),

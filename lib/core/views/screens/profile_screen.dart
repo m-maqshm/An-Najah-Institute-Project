@@ -3,6 +3,7 @@ import 'package:an_najah_project/core/views/widget/drower.dart';
 import 'package:an_najah_project/core/views/widget/list_titel_widget.dart';
 import 'package:an_najah_project/core/views/widget/notificationdialog.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../helpers/storage_helper.dart';
 import '../../view_models/profileVM.dart';
@@ -12,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
   final List<String> notifications = ['الإشعار 1', 'الإشعار 2', 'الإشعار 3'];
   ProfileScreen({super.key});
   ProfileVM profileVM=ProfileVM();
-  static StorageHelper storageHelper = StorageHelper.instance;
+  // static StorageHelper storageHelper = StorageHelper.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -90,104 +91,108 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: Container(
-            height: double.infinity,
-            width: double.infinity,
-            child: ListView(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 30),
-                  child: CircleAvatar(
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                    radius: 60,
-                    child: Icon(
-                      Icons.person,
-                      size: height * 0.12,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child:  Text(storageHelper.readKey('email').toString(),
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(2, 0, 21, 0.34),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30)),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: height * 0.02,
+          body: Consumer<StorageHelper>(
+                              builder: (context,storageHelper , child) {
+              return Container(
+                height: double.infinity,
+                width: double.infinity,
+                child: ListView(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 30),
+                      child: CircleAvatar(
+                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                        radius: 60,
+                        child: Icon(
+                          Icons.person,
+                          size: height * 0.12,
                         ),
-                        ListTitelWidget(
-                          property: "الاسم الكامل :",
-                          value: storageHelper.readKey('arabicName').toString()
-                        ),
-                        // ListTitelWidget(
-                        //   property: "الجنسية :",
-                        //   value: storageHelper.readKey('email').toString(),
-                        // ),
-                        ListTitelWidget(
-                          property: "رقم الهاتف :",
-                          value: storageHelper.readKey('phoneNumber').toString(),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    color: Colors.white60,
-                    child: Container(
-                      margin: const EdgeInsets.all(10),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child:  Text(storageHelper.readKey('email').toString(),
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color.fromRGBO(159, 154, 208, 4)),
+                        color: Color.fromRGBO(2, 0, 21, 0.34),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30)),
+                      ),
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 15),
+                        padding: const EdgeInsets.only(right: 20),
                         child: Column(
                           children: [
                             SizedBox(
                               height: height * 0.02,
                             ),
                             ListTitelWidget(
-                              property: "الاسم بـ EN: ",
-                              value: storageHelper.readKey('englishName').toString(),
+                              property: "الاسم الكامل :",
+                              value: storageHelper.readKey('arabicName').toString()
                             ),
+                            // ListTitelWidget(
+                            //   property: "الجنسية :",
+                            //   value: storageHelper.readKey('email').toString(),
+                            // ),
                             ListTitelWidget(
-                              property: "رقم الهوية :",
-                              value: storageHelper.readKey('Id-card').toString(),
-                            ),
-                            ListTitelWidget(
-                              property: "المحافظة :",
-                              value: storageHelper.readKey('address').toString(),
-                            ),
-                            ListTitelWidget(
-                              property: "المؤهل الدراسي :",
-                              value: storageHelper.readKey('academicQualification').toString(),
-                            ),
-                            ListTitelWidget(
-                              property: "تاريخ الميلاد : ",
-                              value: storageHelper.readKey('dateOfBirth').toString(),
+                              property: "رقم الهاتف :",
+                              value: storageHelper.readKey('phoneNumber').toString(),
                             ),
                           ],
                         ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Container(
+                        color: Colors.white60,
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              color: Color.fromRGBO(159, 154, 208, 4)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: height * 0.02,
+                                ),
+                                ListTitelWidget(
+                                  property: "الاسم بـ EN: ",
+                                  value: storageHelper.readKey('englishName').toString(),
+                                ),
+                                ListTitelWidget(
+                                  property: "رقم الهوية :",
+                                  value: storageHelper.readKey('Id-card').toString(),
+                                ),
+                                ListTitelWidget(
+                                  property: "المحافظة :",
+                                  value: storageHelper.readKey('address').toString(),
+                                ),
+                                ListTitelWidget(
+                                  property: "المؤهل الدراسي :",
+                                  value: storageHelper.readKey('academicQualification').toString(),
+                                ),
+                                ListTitelWidget(
+                                  property: "تاريخ الميلاد : ",
+                                  value: storageHelper.readKey('dateOfBirth').toString(),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            }
           ),
         ));
   }

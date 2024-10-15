@@ -37,10 +37,10 @@ class Coursesvm with ChangeNotifier {
   Future<List<Cours>?> getCrentCours({required int x}) async {
     try {
       Response res = await http.getRequest(url: HttpUrls.cours);
-      List<Cours>? cours = res.data['data'].map<Cours>((e) => Cours.fromJson(e)).toList();
+      List<Cours> cours = res.data['data'].map<Cours>((e) => Cours.fromJson(e)).toList();
       print("code ====== :" + res.statusCode.toString());
       notifyListeners();
-      return cours?.where((e) => e.diplomId == x).toList();
+      return cours.where((e) => e.diplomId == x.toString()).toList();
     }
     catch (x) {
       print(" error= $x");

@@ -62,7 +62,7 @@ class ProfileVM with ChangeNotifier{
         var data = response.data;
         print('Response data: $data');
 
-        if (data['code'] == 200) {
+        if (data['code'] == "200") {
           print('Profile update successful!');
           return true;
         } else {

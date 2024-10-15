@@ -12,8 +12,8 @@ class AppDevelopers extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.mainColor,
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: height * 0.2,
@@ -27,28 +27,25 @@ class AppDevelopers extends StatelessWidget {
             ),
             CardDeveloper(
               name: 'م. لقمان صالح باشريف',
-              rool: 'الــــدور : Frontend Developer',
               email: 'البريد الإلكتروني : loqmanbashreef@gmail.com',
               imageUrl: 'assets/images/alnajah.png',
             ),
             Divider(),
             CardDeveloper(
               name: 'م. محمد صالح مقشم',
-              rool: 'الــــدور : Backend Developer',
               email: 'البريد الإلكتروني : m-maqshm@gmail.com',
               imageUrl: 'assets/images/alnajah.png',
             ),
             Divider(),
             CardDeveloper(
               name: 'م. محمد سعيد الكثيري',
-              rool: 'الـــدور : Backend Developer',
               email: 'البريد الإلكتروني : mssk407@gmail.com',
               imageUrl: 'assets/images/alnajah.png',
             ),
             Divider(),
             Padding(
               padding: const EdgeInsets.only(right: 50 , top: 30),
-              child: Text("يسعدنا تواصلكم عبر الإيميل التالي :    app_alnajah.com"),
+              child: Center(child: Text("يسعدنا تواصلكم عبر الإيميل التالي :    app_alnajah.com")),
             ),
             SizedBox(
               height: height * 0.1,

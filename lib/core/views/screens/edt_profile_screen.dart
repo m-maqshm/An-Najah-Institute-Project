@@ -4,6 +4,7 @@ import 'package:bottom_picker/resources/arrays.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../widget/botton_screen.dart';
 import '../widget/imge_profile.dart';
@@ -195,7 +196,17 @@ class EdtProfileScreen extends StatelessWidget {
                             // profilePicture: null,  // يمكن تعديلها لاحقاً إذا كانت الصورة مطلوبة
                             academicQualtif: academicQualtifController.text.isEmpty ? null : academicQualtifController.text,
                             dateOfBarth: birthdayController.text.isEmpty ? null : birthday!.split(" ").toList().removeAt(0),
-                          );
+                          ).then((x){
+                            Fluttertoast.showToast(
+                                 msg: "لقد تم تحديث ملفك الشخصي بنجاح ",
+                                 toastLength: Toast.LENGTH_SHORT,
+                                 gravity: ToastGravity.CENTER,
+                                 timeInSecForIosWeb: 4,
+                                 backgroundColor: Colors.green,
+                                 textColor: Colors.white,
+                                 fontSize: 16.0);
+                             Navigator.pushReplacementNamed(context, '/profile');
+                          });
                         }
                       },
                     ),
