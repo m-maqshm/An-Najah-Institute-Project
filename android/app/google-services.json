@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "94447234359",
+    "project_id": "an-najah-app",
+    "storage_bucket": "an-najah-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94447234359:android:2645c66856e2f9a6fbbeb2",
+        "android_client_info": {
+          "package_name": "com.example.an_najah_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhPexCGAAL8GV2874LDHPPky1u1zTGcf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94447234359:android:8af856f41ddfbab6fbbeb2",
+        "android_client_info": {
+          "package_name": "com.maqshm.an_najah_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhPexCGAAL8GV2874LDHPPky1u1zTGcf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

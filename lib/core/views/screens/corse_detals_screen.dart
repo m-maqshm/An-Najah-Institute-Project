@@ -33,7 +33,7 @@ class CorseDetalsSreen extends StatelessWidget {
                         decoration: BoxDecoration(
                             // borderRadius: BorderRadius.all(Radius.circular(30)),
                             image: DecorationImage(
-                                image: AssetImage('assets/images/2.png'),
+                                image: NetworkImage('${c.logo}',),
                                 fit: BoxFit.fill),
                             // color: Color
                             color: Color(0xE8C1E7EA)),

@@ -63,6 +63,19 @@ class ProfileVM with ChangeNotifier{
         print('Response data: $data');
 
         if (data['code'] == "200") {
+
+          storageHelper.removeKey('std_Id');
+          storageHelper.removeKey('arabicName' );
+          storageHelper.removeKey('englishName');
+          storageHelper.removeKey('email');
+          storageHelper.removeKey('profilePicture');
+          storageHelper.removeKey('phoneNumber');
+          storageHelper.removeKey('dateOfBirth',);
+          storageHelper.removeKey('Id-card');
+          storageHelper.removeKey('address');
+          storageHelper.removeKey('academicQualification');
+          userVM.fetchUserProfileFromAPI(token: storageHelper.readKey('token').toString());
+
           print('Profile update successful!');
           return true;
         } else {

@@ -86,7 +86,11 @@ class PreCourses extends StatelessWidget {
           Expanded(
             child:FutureBuilder(future: cvm.regesterdCourses(), builder: (context, snapshot) {
 
-              return snapshot.connectionState == ConnectionState.waiting? Center(child: CircularProgressIndicator()):ListView.builder(
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else
+              if(snapshot.hasData)
+                return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (ctx, index) {
                   return Column(
@@ -101,7 +105,7 @@ class PreCourses extends StatelessWidget {
                     ],
                   );
                 },
-              );},),
+              );else return Center(child: Text("nn"),);},),
           ),
         ],
       ),

@@ -3,15 +3,21 @@ import 'package:an_najah_project/core/view_models/profileVM.dart';
 import 'package:an_najah_project/core/view_models/userVM.dart';
 import 'package:an_najah_project/helpers/route_manager.dart';
 import 'package:an_najah_project/helpers/storage_helper.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:provider/provider.dart';
-
+import 'firebase_options.dart';
 import 'core/theem/ligetheem.dart';
 import 'core/view_models/corsvm.dart';
 
-void main() {
+void main() async{
   runApp( MyApp());
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
 }
 
 class MyApp extends StatelessWidget {

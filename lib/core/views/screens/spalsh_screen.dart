@@ -19,15 +19,23 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Image.asset('assets/images/an_najaj_pic.jpg'),
-        Text('An Najah '),
+      body: Container(
+        color:  Color.fromARGB(255, 129, 128, 182),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [Image.asset('assets/images/alnajah.png'),
           SizedBox(height: 30,),
-          Center(child: CircularProgressIndicator(),
-          ),
-        ],
+          Text('معهد النجاح للتدريب والتـأهيل ', style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            fontFamily: "shorog",
+          ),),
+            SizedBox(height: 30,),
+            Center(child: CircularProgressIndicator(),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -93,7 +93,8 @@ class CorsScreen extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/2.png'),fit: BoxFit.cover
+                        image:
+                        AssetImage('assets/images/2.png'),fit: BoxFit.cover
                     ),
                   ),
                 ),
@@ -167,7 +168,7 @@ class CorsScreen extends StatelessWidget {
                                             Container(width: 100,height: 80,decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(Radius.circular(10)),
                                               image: DecorationImage(
-                                                  image: AssetImage("assets/images/2.png",),fit: BoxFit.fill),
+                                                  image: NetworkImage('${c.courses[index].logo}',),fit: BoxFit.fill),
                                             ))
                                           ],),
                                       ),

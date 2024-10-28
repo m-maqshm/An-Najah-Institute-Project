@@ -220,9 +220,7 @@ String namedp ,  img;
                                                               Radius.circular(
                                                                   10)),
                                                       image: DecorationImage(
-                                                          image: AssetImage(
-                                                            "assets/images/2.png",
-                                                          ),
+                                                          image: NetworkImage('${snapshot.data![index].logo}', ),
                                                           fit: BoxFit.fill),
                                                     ))
                                               ],
